@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.climasync" />
+                  <option name="mobileSdkAppId" value="1:291041439680:android:abb2fee9fe0d1ff36be225" />
+                  <option name="projectId" value="climasync-3ff2e" />
+                  <option name="projectNumber" value="291041439680" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
