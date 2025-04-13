@@ -66,7 +66,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/registrarse"
+            android:id="@+id/buttonRegistrar"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginStart="16dp"
@@ -79,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContraseña" />
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar2"
+            android:id="@+id/flechaLogin"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"

@@ -28,6 +28,15 @@ private var _binding: FragmentSecondBinding? = null
 
     }
 
+    private fun setView(){
+        binding.flechaLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        }
+        binding.buttonRegistrar.setOnClickListener {
+            findNavController().navigate(R.id.action_personal_information_to_layoutPermission)
+        }
+    }
+
 override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
