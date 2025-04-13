@@ -33,7 +33,7 @@ private var _binding: FragmentSecondBinding? = null
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
         binding.buttonRegistrar.setOnClickListener {
-            findNavController().navigate(R.id.action_personal_information_to_layoutPermission)
+            findNavController().navigate(R.id.action_SecondFragment_to_personal_information)
         }
     }
 
