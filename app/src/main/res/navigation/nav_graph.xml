@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_restore_password"
+            app:destination="@id/restore_password" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,5 +27,29 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_personal_information"
+            app:destination="@id/personal_information" />
     </fragment>
+    <fragment
+        android:id="@+id/restore_password"
+        android:name="com.example.climasync.restore_password"
+        android:label="restore_password" >
+        <action
+            android:id="@+id/action_restore_password_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personal_information"
+        android:name="com.example.climasync.personal_information"
+        android:label="personal_information" >
+        <action
+            android:id="@+id/action_personal_information_to_layoutPermission"
+            app:destination="@id/layoutPermission" />
+    </fragment>
+    <fragment
+        android:id="@+id/layoutPermission"
+        android:name="com.example.climasync.LayoutPermission"
+        android:label="fragment_layout_permission"
+        tools:layout="@layout/fragment_layout_permission" />
 </navigation>
