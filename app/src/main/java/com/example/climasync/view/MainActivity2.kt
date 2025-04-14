@@ -1,4 +1,4 @@
-package com.example.climasync
+package com.example.climasync.view
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.climasync.R
 import com.example.climasync.databinding.ActivityMain2Binding
 
 class MainActivity2 : AppCompatActivity() {
