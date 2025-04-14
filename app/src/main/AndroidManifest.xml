@@ -13,11 +13,11 @@
         android:theme="@style/Theme.ClimaSync"
         tools:targetApi="31" >
         <activity
-            android:name=".MainActivity2"
+            android:name=".view.MainActivity2"
             android:exported="false"
             android:theme="@style/Theme.ClimaSync" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
