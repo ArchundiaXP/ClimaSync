@@ -13,7 +13,7 @@ import com.example.climasync.utils.FragmentCommunicator
 /**
 
 A simple [Fragment] subclass as the second destination in the navigation.*/
-class SecondFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!

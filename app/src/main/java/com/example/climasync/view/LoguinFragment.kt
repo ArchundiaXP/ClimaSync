@@ -13,7 +13,7 @@ import com.example.climasync.utils.FragmentCommunicator
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class LoguinFragment : Fragment() {
 
 private var _binding: FragmentFirstBinding? = null
     // This property is only valid between onCreateView and
