@@ -5,28 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.climasync.R
+import com.example.climasync.databinding.FragmentLayoutPermissionBinding
+import com.example.climasync.utils.FragmentCommunicator
+import com.example.climasync.viewModel.LayoutPermisionViewModel
+import com.example.climasync.viewModel.PersonalInformationViewModel
+import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LayoutPermission.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LayoutPermission : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+
+    private var _biding: FragmentLayoutPermissionBinding? = null
+    private val binding get() = _biding!!
+    var isValid: Boolean = false
+    private lateinit var communicator: FragmentCommunicator
+    private val viewModel by viewModels<LayoutPermisionViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -34,27 +36,29 @@ class LayoutPermission : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        setupObservers()
         return inflater.inflate(R.layout.fragment_layout_permission, container, false)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LayoutPermission.
-         */
+
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             LayoutPermission().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun setupObservers() {
+        viewModel.msj.observe(viewLifecycleOwner) { msj ->
+            if (msj) {
+                Toast.makeText(activity, "Datos guardados", Toast.LENGTH_SHORT).show()
+                //findNavController().navigate(R.id.action_FirstFragment_to_restore_password)
+            } else {
+                Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
