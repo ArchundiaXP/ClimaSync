@@ -14,6 +14,7 @@ navigationUiKtx = "2.8.9"
 google-services = "4.4.2"
 firebase = "33.12.0"
 lottie = "6.0.0"
+firebaseAuthKtx = "23.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +31,7 @@ firebase = { group = "com.google.firebase", name = "firebase-bom", version.ref =
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
