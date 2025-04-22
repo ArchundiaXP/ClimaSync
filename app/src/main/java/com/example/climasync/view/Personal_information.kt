@@ -111,6 +111,7 @@ class personal_information : Fragment() {
         viewModel.loaderState.observe(viewLifecycleOwner){ loaderState ->
             communicator.showLoader(loaderState)//llamamos al loader para mostrarlo
         }
+
         viewModel.msj.observe(viewLifecycleOwner){ msj ->
             if(msj){
                 Toast.makeText(activity, "Datos guardados", Toast.LENGTH_SHORT).show()
