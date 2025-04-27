@@ -9,20 +9,24 @@
         android:id="@+id/FirstFragment"
         android:name="com.example.climasync.view.FirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" >
+        tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_restore_password"
-            app:destination="@id/restore_password" />
+            app:destination="@id/Restore_password" />
+        <action
+            android:id="@+id/action_FirstFragment_to_weather"
+            app:destination="@id/weather" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.climasync.view.SecondFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" >
+        tools:layout="@layout/fragment_second">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
@@ -31,25 +35,33 @@
             android:id="@+id/action_SecondFragment_to_personal_information"
             app:destination="@id/personal_information" />
     </fragment>
+
     <fragment
-        android:id="@+id/restore_password"
-        android:name="com.example.climasync.view.restore_password"
-        android:label="restore_password" >
+        android:id="@+id/Restore_password"
+        android:name="com.example.climasync.view.Restore_password"
+        android:label="restore_password">
         <action
             android:id="@+id/action_restore_password_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/personal_information"
-        android:name="com.example.climasync.view.personal_information"
-        android:label="personal_information" >
-        <action
-            android:id="@+id/action_personal_information_to_layoutPermission"
-            app:destination="@id/layoutPermission" />
-    </fragment>
+
     <fragment
         android:id="@+id/layoutPermission"
         android:name="com.example.climasync.view.LayoutPermission"
         android:label="fragment_layout_permission"
         tools:layout="@layout/fragment_layout_permission" />
+
+    <fragment
+        android:id="@+id/weather"
+        android:name="com.example.climasync.view.Weather"
+        android:label="weather" />
+    <fragment
+        android:id="@+id/personal_information"
+        android:name="com.example.climasync.view.Personal_information"
+        android:label="Personal_information" >
+        <action
+            android:id="@+id/action_personal_information_to_layoutPermission"
+            app:destination="@id/layoutPermission" />
+    </fragment>
+
 </navigation>

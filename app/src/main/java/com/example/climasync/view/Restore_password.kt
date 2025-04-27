@@ -20,7 +20,7 @@ import com.example.climasync.viewModel.RestorePasswordViewModel
 A simple [Fragment] subclass.
 Use the [restore_password.newInstance] factory method to
 create an instance of this fragment.*/
-class restore_password : Fragment() {
+class Restore_password : Fragment() {
     // TODO: Rename and change types of parameters
 
     private var _binding: FragmentRestorePasswordBinding? = null
