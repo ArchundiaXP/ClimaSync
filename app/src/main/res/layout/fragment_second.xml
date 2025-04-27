@@ -36,6 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietEmail"
             android:layout_width="match_parent"
@@ -59,8 +60,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietPassword"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"

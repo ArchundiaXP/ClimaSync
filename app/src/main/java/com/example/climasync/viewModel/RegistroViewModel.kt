@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -13,9 +14,11 @@ import kotlinx.coroutines.tasks.await
 class RegistroViewModel : ViewModel() {
 
     //publisher para el loader
+
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean>
         get() = _loaderState
+
 
     //publisher para el registro
     private val _validRegister = MutableLiveData<Boolean>()
@@ -47,5 +50,6 @@ class RegistroViewModel : ViewModel() {
             _validRegister.value = false
         }
     }
+
 
 }
