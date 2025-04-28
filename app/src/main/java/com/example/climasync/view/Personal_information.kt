@@ -20,7 +20,7 @@ import com.example.climasync.viewModel.PersonalInformationViewModel
 A simple [Fragment] subclass.
 Use the [personal_information.newInstance] factory method to
 create an instance of this fragment.*/
-class personal_information : Fragment() {
+class Personal_information : Fragment() {
     // TODO: Rename and change types of parameters
 
     private var _binding: FragmentPersonalInformationBinding? = null

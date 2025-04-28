@@ -20,7 +20,7 @@ import com.example.climasync.viewModel.FirstFragmentViewModel
  */
 class FirstFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentFirstBinding? = null//hacemos referencia al fragmento
     private val binding get() = _binding!!
     private val viewModel by viewModels<FirstFragmentViewModel>() //enlazamos el viewModel
     var isValid:Boolean = false
@@ -46,7 +46,7 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         //cuando de click en el boton de login
-        binding.registrarse.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             //validar que se ingresen en los campos datos
             if(isValid){
                 requestLogin()
@@ -85,9 +85,12 @@ class FirstFragment : Fragment() {
         //accedemos a los publisher y con el observer definimos quien es el encargado del ciclo de vida
         viewModel.sessionValid.observe(viewLifecycleOwner) { sessionValid ->
             if (sessionValid) {//si el usuario existe
+
+
                 //llamamos a la actividad principal
-                val intent = Intent(activity, MainActivity::class.java)
-                //activamos la  actividad principal
+                val intent = Intent(activity, MainActivity2::class.java)//llamamos a la actividad para inciar nuevo flujo
+                findNavController().navigate(R.id.action_FirstFragment_to_weather)
+               //activamos la  actividad principal
                 startActivity(intent)
                 activity?.finish() //cerramos la actividad actual
             }else{
@@ -98,7 +101,7 @@ class FirstFragment : Fragment() {
         }
     }
 
-private fun requestLogin() {
+private fun requestLogin() { //aqui le mandamos a la funcion requestSingnIn del viewModel los datos que ingresaron
     viewModel.requestSingnIn(binding.emailTIET.text.toString(),
         binding.passwordTIET.text.toString())
 }
