@@ -1,0 +1,23 @@
+Index: .idea/appInsightsSettings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AppInsightsSettings\">\n    <option name=\"tabSettings\">\n      <map>\n        <entry key=\"Firebase Crashlytics\">\n          <value>\n            <InsightsFilterSettings>\n              <option name=\"connection\">\n                <ConnectionSetting>\n                  <option name=\"appId\" value=\"PLACEHOLDER\" />\n                  <option name=\"mobileSdkAppId\" value=\"\" />\n                  <option name=\"projectId\" value=\"\" />\n                  <option name=\"projectNumber\" value=\"\" />\n                </ConnectionSetting>\n              </option>\n              <option name=\"signal\" value=\"SIGNAL_UNSPECIFIED\" />\n              <option name=\"timeIntervalDays\" value=\"THIRTY_DAYS\" />\n              <option name=\"visibilityType\" value=\"ALL\" />\n            </InsightsFilterSettings>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/appInsightsSettings.xml b/.idea/appInsightsSettings.xml
+--- a/.idea/appInsightsSettings.xml	(revision 2f330504900ad3c2468c5493cded143a54f3bed4)
++++ b/.idea/appInsightsSettings.xml	(date 1744247657499)
+@@ -8,10 +8,10 @@
+             <InsightsFilterSettings>
+               <option name="connection">
+                 <ConnectionSetting>
+-                  <option name="appId" value="PLACEHOLDER" />
+-                  <option name="mobileSdkAppId" value="" />
+-                  <option name="projectId" value="" />
+-                  <option name="projectNumber" value="" />
++                  <option name="appId" value="com.example.climasync" />
++                  <option name="mobileSdkAppId" value="1:291041439680:android:abb2fee9fe0d1ff36be225" />
++                  <option name="projectId" value="climasync-3ff2e" />
++                  <option name="projectNumber" value="291041439680" />
+                 </ConnectionSetting>
+               </option>
+               <option name="signal" value="SIGNAL_UNSPECIFIED" />
