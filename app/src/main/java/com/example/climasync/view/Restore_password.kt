@@ -15,13 +15,8 @@ import com.example.climasync.utils.FragmentCommunicator
 import com.example.climasync.viewModel.RestorePasswordViewModel
 
 
-/**
 
-A simple [Fragment] subclass.
-Use the [restore_password.newInstance] factory method to
-create an instance of this fragment.*/
 class Restore_password : Fragment() {
-    // TODO: Rename and change types of parameters
 
     private var _binding: FragmentRestorePasswordBinding? = null
     private val binding get() = _binding!!
@@ -58,7 +53,7 @@ class Restore_password : Fragment() {
         binding.resertButton.setOnClickListener {
             if(isValid){
                 requestRestorePassword()
-                // Aquí podrías poner lógica de validación o envío
+
                 Toast.makeText(activity, "Datos válidos", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(activity, "Datos inválidos", Toast.LENGTH_SHORT).show()
@@ -68,7 +63,7 @@ class Restore_password : Fragment() {
         binding.editTextEmail.addTextChangedListener{
 
             if(binding.editTextEmail.text.toString().isEmpty()){
-                binding.textViewInstruction.error = "Campo requerido"
+                binding.textViewInstruction.error= "Campo requerido"
                 isValid = false
             }else{
                 isValid = true

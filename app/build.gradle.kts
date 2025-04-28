@@ -57,4 +57,8 @@ dependencies {
     implementation(libs.firebase.firestore)
     //Lottie
     implementation(libs.lottie)
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.retrofit.converter)
 }
