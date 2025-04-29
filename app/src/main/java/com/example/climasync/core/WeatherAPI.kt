@@ -10,6 +10,6 @@ interface WeatherAPI {
     @GET("/current.json")
     suspend fun getCurrentWeather(
         @Query("key") apiKey: String,
-        @Query("q") query: String
+        @Query("q") coordinates: String
     ): Response<WeatherResponse>
 }

@@ -12,7 +12,7 @@ class WeatherRepository {
         return try {
             val response = retrofit.getCurrentWeather(
                 apiKey ="ad8d7511f63c4e00baa173252252804", // Reemplazar con tu API key real
-                query = "$lat,$lon"
+                coordinates = "$lat,$lon"
             )
             Log.d("WEATHER_API", "Datos obtenidos: ${response.body()}")
             response.body()
