@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.climasync.databinding.FragmentWeatherBinding
 import com.example.climasync.model.WeatherResponse
@@ -15,6 +16,10 @@ import com.example.climasync.utils.FragmentCommunicator
 import com.example.climasync.viewModel.WeatherViewModel
 import java.util.Locale
 import com.example.climasync.R
+import com.example.climasync.core.LocationProvider
+import kotlinx.coroutines.launch
+import android.Manifest
+import android.content.pm.PackageManager
 
 
 /**
@@ -40,13 +45,12 @@ class WeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupView()
-    }
-
-    private fun setupView() {
         setupObservers()
-        val coordinates = getUserCoordinates()
-        viewModel.requestAPIInformation(coordinates)
+        if (LocationProvider.getInstance(requireContext()).hasLocationPermission(requireContext())) {
+            getUserLocationAndWeather()
+        } else {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
+        }
     }
 
     private fun setupObservers() {
@@ -98,11 +102,34 @@ class WeatherFragment : Fragment() {
         Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
     }
 
-    private fun getUserCoordinates(): String {
-        // TODO: Implementar lógica real para obtener coordenadas
-        // Por ahora devuelve coordenadas por defecto (CDMX)
-        return "19.42847,-99.12766"
+    private fun getUserLocationAndWeather() {
+        lifecycleScope.launch {
+            try {
+                val location = LocationProvider.getInstance(requireContext()).getCurrentLocation()
+                if (location != null) {
+                    val lat = location.latitude
+                    val lon = location.longitude
+                    viewModel.fetchWeatherByCoordinates(lat, lon)
+                } else {
+                    // Ubicación nula, usar ubicación por defecto
+                    Toast.makeText(
+                        requireContext(),
+                        "No se pudo obtener la ubicación actual. Usando ubicación por defecto.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // NYC como ejemplo
+                }
+            } catch (e: Exception) {
+                Toast.makeText(
+                    requireContext(),
+                    "Error al obtener ubicación: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // NYC como ejemplo
+            }
+        }
     }
+
 
     // Extension functions for formatting
     private fun formatDateTime(dateTimeString: String?): String {
@@ -185,12 +212,35 @@ class WeatherFragment : Fragment() {
             else -> ""
         }
 
-        // Buscar traducción o usar el texto original si no existe
+
         val displayCondition = weatherTranslations[lowerCondition] ?: condition
 
         return "$emoji $displayCondition"
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1001 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getUserLocationAndWeather()
+                } else {
+                    // Permiso denegado, muestra un mensaje o usa una ubicación por defecto
+                    Toast.makeText(
+                        requireContext(),
+                        "Permiso de ubicación denegado. Usando ubicación por defecto.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // Puedes llamar a una ubicación por defecto aquí
+                    viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // NYC como ejemplo
+                }
+            }
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
