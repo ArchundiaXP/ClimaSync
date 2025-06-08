@@ -1,0 +1,35 @@
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\nagp = \"8.7.3\"\nkotlin = \"2.1.10\"\ncoreKtx = \"1.16.0\"\njunit = \"4.13.2\"\njunitVersion = \"1.2.1\"\nespressoCore = \"3.6.1\"\nappcompat = \"1.7.0\"\nmaterial = \"1.12.0\"\nactivity = \"1.10.1\"\nconstraintlayout = \"2.2.1\"\nnavigationFragmentKtx = \"2.8.9\"\nnavigationUiKtx = \"2.8.9\"\ngoogle-services = \"4.4.2\"\nfirebase = \"33.12.0\"\nlottie = \"6.0.0\"\nfirebaseAuthKtx = \"23.2.0\"\nretrofitVersion = \"2.9.0\"\ngson = \"2.10.1\"\n\n\n[libraries]\nandroidx-core-ktx = { group = \"androidx.core\", name = \"core-ktx\", version.ref = \"coreKtx\" }\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\nandroidx-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\nandroidx-espresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\nandroidx-appcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\nandroidx-activity = { group = \"androidx.activity\", name = \"activity\", version.ref = \"activity\" }\nandroidx-constraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\nandroidx-navigation-fragment-ktx = { group = \"androidx.navigation\", name = \"navigation-fragment-ktx\", version.ref = \"navigationFragmentKtx\" }\nandroidx-navigation-ui-ktx = { group = \"androidx.navigation\", name = \"navigation-ui-ktx\", version.ref = \"navigationUiKtx\" }\nfirebase = { group = \"com.google.firebase\", name = \"firebase-bom\", version.ref = \"firebase\"}\nfirebase-auth = { group = \"com.google.firebase\", name = \"firebase-auth-ktx\" }\nfirebase-firestore = { group = \"com.google.firebase\", name = \"firebase-firestore\" }\nlottie = { group = \"com.airbnb.android\", name = \"lottie\", version.ref = \"lottie\" }\nfirebase-auth-ktx = { group = \"com.google.firebase\", name = \"firebase-auth-ktx\", version.ref = \"firebaseAuthKtx\" }\nretrofit = { group = \"com.squareup.retrofit2\", name = \"retrofit\", version.ref = \"retrofitVersion\" }\nretrofit-converter = { group = \"com.squareup.retrofit2\", name = \"converter-gson\", version.ref = \"retrofitVersion\"}\ngson = { group = \"com.google.code.gson\", name = \"gson\", version.ref = \"gson\"}\n\n[plugins]\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\nkotlin-android = { id = \"org.jetbrains.kotlin.android\", version.ref = \"kotlin\" }\ngoogle-services-plugin = { id = \"com.google.gms.google-services\", version.ref = \"google-services\" }\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision 5f6163cadef6a2c71bfee3be3bf6bc7b58a7afe2)
++++ b/gradle/libs.versions.toml	(date 1749354018261)
+@@ -1,5 +1,5 @@
+ [versions]
+-agp = "8.7.3"
++agp = "8.9.2"
+ kotlin = "2.1.10"
+ coreKtx = "1.16.0"
+ junit = "4.13.2"
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Thu Mar 27 17:26:17 CST 2025\ndistributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-bin.zip\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision 5f6163cadef6a2c71bfee3be3bf6bc7b58a7afe2)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1749354018265)
+@@ -1,6 +1,6 @@
+ #Thu Mar 27 17:26:17 CST 2025
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
