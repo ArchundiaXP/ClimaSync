@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,4 +63,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.retrofit.converter)
+    //Glide
+    implementation(libs.glide)
 }

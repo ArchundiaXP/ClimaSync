@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -13,43 +15,58 @@ import kotlinx.coroutines.tasks.await
 
 class RegistroViewModel : ViewModel() {
 
-    //publisher para el loader
-
     private val _loaderState = MutableLiveData<Boolean>()
-    val loaderState: LiveData<Boolean>
-        get() = _loaderState
+    val loaderState: LiveData<Boolean> get() = _loaderState
 
-
-    //publisher para el registro
     private val _validRegister = MutableLiveData<Boolean>()
-    val validRegister: LiveData<Boolean>
-        get() = _validRegister //obtiene boolean de register
+    val validRegister: LiveData<Boolean> get() = _validRegister
 
-    private val firebase = FirebaseAuth.getInstance() //instancia
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> get() = _errorMessage
 
-    //funcion para registrar
+    private val firebase = FirebaseAuth.getInstance()
+
     fun requestSignUp(email: String, password: String) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            _loaderState.value = true //muestra loader por que comienza corrutina
+            _loaderState.value = true
 
-            viewModelScope.launch { //inicia corrutina
-                val result = firebase.createUserWithEmailAndPassword(email, password).await()
-                _loaderState.value = false //cuando termina corrutina oculta loader
-                //mensajes para verificar estado de registro
-                result.user?.let {
-                    delay(5000)
-                    Log.i("Firebase", "Se creó al usuario con éxito.")
-                    _validRegister.value = true
-                } ?: run {
-                    delay(5000)
-                    Log.e("Firebase", "Ocurrio un problema al crear al usuario.")
+            viewModelScope.launch {
+                try {
+                    val result = firebase.createUserWithEmailAndPassword(email, password).await()
+                    _loaderState.value = false
 
+                    result.user?.let {
+                        Log.i("Firebase", "Usuario registrado con éxito.")
+                        _validRegister.value = true
+                    } ?: run {
+                        Log.e("Firebase", "Usuario nulo después del registro.")
+                        _errorMessage.value = "Ocurrió un error inesperado. Intenta nuevamente."
+                        _validRegister.value = false
+                    }
+
+                } catch (e: FirebaseAuthWeakPasswordException) {
+                    _loaderState.value = false
+                    Log.e("Firebase", "Contraseña débil: ${e.message}")
+                    _errorMessage.value = "La contraseña debe tener al menos 6 caracteres."
+                    _validRegister.value = false
+
+                } catch (e: FirebaseAuthUserCollisionException) {
+                    _loaderState.value = false
+                    Log.e("Firebase", "Correo ya registrado: ${e.message}")
+                    _errorMessage.value = "El correo ya está en uso. Usa otro o inicia sesión."
+                    _validRegister.value = false
+
+                } catch (e: Exception) {
+                    _loaderState.value = false
+                    Log.e("Firebase", "Error desconocido: ${e.message}")
+                    _errorMessage.value = "Error al registrar: ${e.localizedMessage ?: "desconocido"}"
+                    _validRegister.value = false
                 }
             }
+
         } else {
+            _errorMessage.value = "Debes completar todos los campos."
             _validRegister.value = false
         }
     }
-
-
 }

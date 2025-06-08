@@ -1,23 +1,23 @@
-package com.example.climasync.view
+package com.example.climasync.view.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.climasync.R
 import com.example.climasync.databinding.FragmentPersonalInformationBinding
 import com.example.climasync.utils.FragmentCommunicator
-import com.example.climasync.viewModel.PersonalInformationViewModel
 
+import com.example.climasync.viewModel.PersonalInformationViewModel
 
 /**
 
-A simple [Fragment] subclass.
+A simple [androidx.fragment.app.Fragment] subclass.
 Use the [personal_information.newInstance] factory method to
 create an instance of this fragment.*/
 class Personal_information : Fragment() {
@@ -41,7 +41,7 @@ class Personal_information : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPersonalInformationBinding.inflate(inflater, container, false)
-        communicator = requireActivity() as MainActivity
+        communicator = requireActivity() as Onboarding
         setupView()
         setupObservers()
         return binding.root
@@ -138,5 +138,3 @@ class Personal_information : Fragment() {
         _binding = null
     }
 }
-
-

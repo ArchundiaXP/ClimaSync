@@ -17,7 +17,9 @@ lottie = "6.0.0"
 firebaseAuthKtx = "23.2.0"
 retrofitVersion = "2.9.0"
 gson = "2.10.1"
-
+navigationFragmentKtxVersion = "2.9.0"
+navigationUiKtxVersion = "2.9.0"
+glideVersion = "4.15.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +40,9 @@ firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx",
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
 retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion"}
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson"}
+navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
+navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtxVersion" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

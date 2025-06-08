@@ -35,7 +35,7 @@ class Restore_password : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRestorePasswordBinding.inflate(inflater, container, false)
-        communicator = requireActivity() as MainActivity
+        communicator = requireActivity() as FragmentCommunicator
         setupView()
         setupObservers()
         requestRestorePassword()
@@ -44,10 +44,10 @@ class Restore_password : Fragment() {
 
     private fun setupView() {
         binding.flechaRestorePassword.setOnClickListener {
-            findNavController().navigate(R.id.action_restore_password_to_FirstFragment)
+            findNavController().navigate(R.id.action_restore_password_to_loginFragment)
         }
         binding.resertButton.setOnClickListener {
-            findNavController().navigate(R.id.action_restore_password_to_FirstFragment)
+            findNavController().navigate(R.id.action_restore_password_to_loginFragment)
         }
 
         binding.resertButton.setOnClickListener {
@@ -79,7 +79,7 @@ class Restore_password : Fragment() {
             viewModel.msj.observe(viewLifecycleOwner) { msj ->
                 if (msj) {
                     Toast.makeText(activity, "Datos guardados", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_personal_information_to_layoutPermission)
+
                 } else {
                     Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show()
                 }
