@@ -8,13 +8,15 @@ import kotlinx.coroutines.launch
 
 class LayoutPermisionViewModel : ViewModel() {
 
+    private val _loaderState = MutableLiveData<Boolean>()
+    val loaderState: LiveData<Boolean>
+        get() = _loaderState
+
     private val _msj = MutableLiveData<Boolean>()
     val msj: LiveData<Boolean>
         get() = _msj
 
     fun requestLayoutPermision() {
-        viewModelScope.launch {
-            _msj.value = true // activamos mensaje
-        }
+       _msj.value = true
     }
 }

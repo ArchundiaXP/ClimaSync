@@ -8,11 +8,11 @@ import com.example.climasync.model.WeatherResponse
 class WeatherRepository {
     private val retrofit = RetrofitInstance.getRetrofit().create(WeatherAPI::class.java)
 
-    suspend fun getCurrentWeather(lat: Double, lon: Double): WeatherResponse? {
+    suspend fun getCurrentWeather(coordinates: String): WeatherResponse? {
         return try {
             val response = retrofit.getCurrentWeather(
-                apiKey ="ad8d7511f63c4e00baa173252252804", // Reemplazar con tu API key real
-                query = "$lat,$lon"
+                apiKey ="2c3b876526d649368b8143309250606",
+                coordinates
             )
             Log.d("WEATHER_API", "Datos obtenidos: ${response.body()}")
             response.body()
