@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit
 object  RetrofitInstance {
     fun getRetrofit(): Retrofit{
         val httpClient = OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(20, TimeUnit.SECONDS)
+            .readTimeout(40, TimeUnit.SECONDS)
             .build()
         return Retrofit.Builder()
             .baseUrl("https://api.weatherapi.com/")
