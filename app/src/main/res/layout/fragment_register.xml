@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/person_add_49dp_000000_fill0_wght400_grad0_opsz48" />
+        tools:src="@drawable/user_icon"
+        tools:srcCompat="@drawable/user_icon" />
 
 
     <com.google.android.material.textfield.TextInputLayout
