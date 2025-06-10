@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services.plugin)
+    alias(libs.plugins.firebase.crashlytics)
+
 }
 
 android {
@@ -57,6 +59,8 @@ dependencies {
     implementation(platform(libs.firebase))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
     //Lottie
     implementation(libs.lottie)
     // retrofit

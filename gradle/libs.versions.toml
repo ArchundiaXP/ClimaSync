@@ -47,9 +47,13 @@ navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx",
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
 location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "location" }
 coroutines-play = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version = "21.0.0" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version = "18.0.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-services-plugin = { id = "com.google.gms.google-services", version.ref = "google-services" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version = "3.0.4" }
+
 
