@@ -51,6 +51,11 @@ class WeatherFragment : Fragment() {
         } else {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
         }
+
+        /* FORZAR CRASH con el botón btMenu
+        binding.btMenu.setOnClickListener {
+            throw RuntimeException("Crash for testing Crashlytics")
+        }*/
     }
 
     private fun setupObservers() {
