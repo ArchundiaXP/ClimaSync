@@ -22,10 +22,6 @@ import android.Manifest
 import android.content.pm.PackageManager
 
 
-/**
- * Fragment that displays weather information for a given location.
- * Uses [WeatherViewModel] to fetch and manage weather data.
- */
 class WeatherFragment : Fragment() {
 
     private var _binding: FragmentWeatherBinding? = null
@@ -70,6 +66,11 @@ class WeatherFragment : Fragment() {
                 showErrorState()
             }
         }
+        viewModel.forecast.observe(viewLifecycleOwner) { forecastList ->
+            val sunrise = forecastList.firstOrNull()?.astro?.sunrise
+            binding.txtHoraAmanecer.text = sunrise ?: getString(R.string.unknown_time)
+        }
+
 
 
     }
@@ -142,12 +143,13 @@ class WeatherFragment : Fragment() {
         return try {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
             val date = inputFormat.parse(dateTimeString)
-            val outputFormat = SimpleDateFormat("EEEE, d MMMM - HH:mm", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("EEEE, d 'de' MMMM - HH:mm", Locale("es", "MX"))
             outputFormat.format(date!!)
         } catch (e: Exception) {
             dateTimeString
         }
     }
+
 
 
     private val weatherTranslations = mapOf(

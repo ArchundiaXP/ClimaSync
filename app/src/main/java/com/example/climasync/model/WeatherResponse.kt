@@ -16,7 +16,8 @@ data class Location(
     val lat: Double,
     val lon: Double,
     @SerializedName("tz_id") val tzId: String,
-    val localTime: String
+    @SerializedName("localtime") val localTime: String
+
 )
 
 data class Current(

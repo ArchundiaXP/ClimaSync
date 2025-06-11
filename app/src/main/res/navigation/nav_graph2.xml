@@ -6,12 +6,6 @@
     app:startDestination="@id/nav_weather_home">
 
     <fragment
-        android:id="@+id/nav_weather2"
-        android:name="com.example.climasync.view.home.WeatherFragment"
-        android:label="WeatherHome"
-        tools:layout="@layout/fragment_weather2" />
-
-    <fragment
         android:id="@+id/nav_weather_home"
         android:name="com.example.climasync.view.WeatherFragment"
         android:label="Weather"
@@ -23,7 +17,11 @@
         android:name="com.example.climasync.view.home.UserFragment"
         android:label="User"
         tools:layout="@layout/fragment_user" />
-
+    <fragment
+        android:id="@+id/climaFragment"
+        android:name="com.example.climasync.view.ClimaFragment"
+        android:label="Clima"
+        tools:layout="@layout/fragment_clima"/>
 
 
 </navigation>
