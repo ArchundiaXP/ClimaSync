@@ -1,0 +1,1253 @@
+Index: app/src/main/res/navigation/nav_graph2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    android:id=\"@+id/nav_graph2\"\n    app:startDestination=\"@id/weatherFragment\">\n    <fragment\n        android:id=\"@+id/weatherFragment\"\n        android:name=\"com.example.climasync.view.WeatherFragment\"\n        android:label=\"WeatherFragment\" />\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/nav_graph2.xml b/app/src/main/res/navigation/nav_graph2.xml
+--- a/app/src/main/res/navigation/nav_graph2.xml	(revision e9f2b09cea772dd038dc169c8f18a71cea8e30b1)
++++ b/app/src/main/res/navigation/nav_graph2.xml	(date 1749672279269)
+@@ -1,10 +1,29 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/nav_graph2"
+-    app:startDestination="@id/weatherFragment">
++    app:startDestination="@id/nav_weather_home">
++
++    <fragment
++        android:id="@+id/nav_weather2"
++        android:name="com.example.climasync.view.home.WeatherFragment"
++        android:label="WeatherHome"
++        tools:layout="@layout/fragment_weather2" />
++
+     <fragment
+-        android:id="@+id/weatherFragment"
++        android:id="@+id/nav_weather_home"
+         android:name="com.example.climasync.view.WeatherFragment"
+-        android:label="WeatherFragment" />
+-</navigation>
+\ No newline at end of file
++        android:label="Weather"
++        tools:layout="@layout/fragment_weather" />
++
++
++    <fragment
++        android:id="@+id/nav_user"
++        android:name="com.example.climasync.view.home.UserFragment"
++        android:label="User"
++        tools:layout="@layout/fragment_user" />
++
++
++
++</navigation>
+Index: app/src/main/res/layout/fragment_weather.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n    <com.google.android.material.button.MaterialButton\n        android:id=\"@+id/btMenu\"\n        android:layout_width=\"32dp\"\n        android:layout_height=\"32dp\"\n        android:layout_marginStart=\"16dp\"\n        android:layout_marginTop=\"16dp\"\n        android:background=\"@drawable/menu\"\n        android:contentDescription=\"menu bar\"\n        app:backgroundTint=\"@color/black\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <TextView\n        android:id=\"@+id/txtNomCiudad\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"64dp\"\n        android:text=\"Ciudad\"\n        android:textSize=\"48sp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <TextView\n        android:id=\"@+id/txtDiaHora\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"4dp\"\n        android:text=\"Dia Hora\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtNomCiudad\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtNomCiudad\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txtNomCiudad\" />\n\n    <ImageView\n        android:id=\"@+id/imageView\"\n        android:layout_width=\"250dp\"\n        android:layout_height=\"250dp\"\n        android:layout_marginTop=\"32dp\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtClima\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtClima\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txtDiaHora\"\n        tools:src=\"@tools:sample/backgrounds/scenic\" />\n\n    <TextView\n        android:id=\"@+id/txtClima\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"32dp\"\n        android:text=\"clima\"\n        android:textSize=\"48sp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/imageView\" />\n\n    <TextView\n        android:id=\"@+id/txtSaludo\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"16dp\"\n        android:text=\"BuenosDias\"\n        android:textSize=\"24sp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txtClima\" />\n\n    <ImageView\n        android:id=\"@+id/imgDiv\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"16dp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txtSaludo\"\n        app:srcCompat=\"@drawable/check_indeterminate_small_24px\" />\n\n    <TextView\n        android:id=\"@+id/txtHoraAmanecer\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"16dp\"\n        android:layout_marginEnd=\"8dp\"\n        android:layout_marginBottom=\"16dp\"\n        android:text=\"6:00 hrs\"\n        android:textSize=\"16sp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toStartOf=\"@+id/imageView8\"\n        app:layout_constraintStart_toStartOf=\"parent\" />\n\n    <TextView\n        android:id=\"@+id/txtTemperatura\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"8dp\"\n        android:layout_marginEnd=\"8dp\"\n        android:layout_marginBottom=\"16dp\"\n        android:text=\"23° \"\n        android:textSize=\"16sp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toStartOf=\"@+id/imageView9\"\n        app:layout_constraintStart_toEndOf=\"@+id/imageView8\" />\n\n    <ImageView\n        android:id=\"@+id/imageView8\"\n        android:layout_width=\"24dp\"\n        android:layout_height=\"24dp\"\n        android:layout_marginStart=\"8dp\"\n        android:layout_marginEnd=\"8dp\"\n        android:layout_marginBottom=\"16dp\"\n        android:rotation=\"180\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toStartOf=\"@+id/txtTemperatura\"\n        app:layout_constraintStart_toEndOf=\"@+id/txtHoraAmanecer\"\n        app:srcCompat=\"@drawable/linea_horizontal\" />\n\n    <ImageView\n        android:id=\"@+id/imageView9\"\n        android:layout_width=\"24dp\"\n        android:layout_height=\"24dp\"\n        android:layout_marginStart=\"8dp\"\n        android:layout_marginEnd=\"8dp\"\n        android:layout_marginBottom=\"16dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toStartOf=\"@+id/txtVelocidadV\"\n        app:layout_constraintStart_toEndOf=\"@+id/txtTemperatura\"\n        app:srcCompat=\"@drawable/linea_horizontal\" />\n\n    <TextView\n        android:id=\"@+id/txtVelocidadV\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"8dp\"\n        android:layout_marginEnd=\"16dp\"\n        android:layout_marginBottom=\"16dp\"\n        android:text=\"4 m/s\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toEndOf=\"@+id/imageView9\" />\n\n    <ImageView\n        android:id=\"@+id/imageView10\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintBottom_toTopOf=\"@+id/txtVient\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtVient\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtVient\"\n        app:srcCompat=\"@drawable/aire\" />\n\n    <TextView\n        android:id=\"@+id/txtVient\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginBottom=\"2dp\"\n        android:text=\"viento\"\n        app:layout_constraintBottom_toTopOf=\"@+id/txtVelocidadV\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtVelocidadV\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtVelocidadV\" />\n\n    <TextView\n        android:id=\"@+id/txtTemp\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginBottom=\"2dp\"\n        android:text=\"Temperatura\"\n        app:layout_constraintBottom_toTopOf=\"@+id/txtTemperatura\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtTemperatura\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtTemperatura\" />\n\n    <ImageView\n        android:id=\"@+id/imageView11\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintBottom_toTopOf=\"@+id/txtTemp\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtTemp\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtTemp\"\n        app:srcCompat=\"@drawable/temperatura\" />\n\n    <TextView\n        android:id=\"@+id/textView6\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginBottom=\"2dp\"\n        android:text=\"Amanecer\"\n        app:layout_constraintBottom_toTopOf=\"@+id/txtHoraAmanecer\"\n        app:layout_constraintEnd_toEndOf=\"@+id/txtHoraAmanecer\"\n        app:layout_constraintStart_toStartOf=\"@+id/txtHoraAmanecer\" />\n\n    <ImageView\n        android:id=\"@+id/imageView12\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintBottom_toTopOf=\"@+id/textView6\"\n        app:layout_constraintEnd_toEndOf=\"@+id/textView6\"\n        app:layout_constraintStart_toStartOf=\"@+id/textView6\"\n        app:srcCompat=\"@drawable/sol\" />\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_weather.xml b/app/src/main/res/layout/fragment_weather.xml
+--- a/app/src/main/res/layout/fragment_weather.xml	(revision e9f2b09cea772dd038dc169c8f18a71cea8e30b1)
++++ b/app/src/main/res/layout/fragment_weather.xml	(date 1749672265484)
+@@ -1,11 +1,12 @@
+-<?xml version="1.0" encoding="utf-8"?>
+ <androidx.constraintlayout.widget.ConstraintLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
++    android:layout_height="match_parent"
++    tools:context=".view.WeatherFragment">
+ 
++    <!-- Botón de menú -->
+     <com.google.android.material.button.MaterialButton
+         android:id="@+id/btMenu"
+         android:layout_width="32dp"
+@@ -18,188 +19,151 @@
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
++    <!-- Ciudad -->
+     <TextView
+         android:id="@+id/txtNomCiudad"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="64dp"
+         android:text="Ciudad"
+-        android:textSize="48sp"
+-        app:layout_constraintEnd_toEndOf="parent"
++        android:textSize="36sp"
++        app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
++    <!-- Día y hora -->
+     <TextView
+         android:id="@+id/txtDiaHora"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
++        android:text="Día y Hora"
+         android:layout_marginTop="4dp"
+-        android:text="Dia Hora"
+-        app:layout_constraintEnd_toEndOf="@+id/txtNomCiudad"
+-        app:layout_constraintStart_toStartOf="@+id/txtNomCiudad"
+-        app:layout_constraintTop_toBottomOf="@+id/txtNomCiudad" />
++        app:layout_constraintTop_toBottomOf="@id/txtNomCiudad"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
++    <!-- Imagen del clima -->
+     <ImageView
+         android:id="@+id/imageView"
+-        android:layout_width="250dp"
+-        android:layout_height="250dp"
+-        android:layout_marginTop="32dp"
+-        app:layout_constraintEnd_toEndOf="@+id/txtClima"
+-        app:layout_constraintStart_toStartOf="@+id/txtClima"
+-        app:layout_constraintTop_toBottomOf="@+id/txtDiaHora"
++        android:layout_width="180dp"
++        android:layout_height="180dp"
++        android:layout_marginTop="24dp"
++        app:layout_constraintTop_toBottomOf="@id/txtDiaHora"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
+         tools:src="@tools:sample/backgrounds/scenic" />
+ 
++    <!-- Temperatura actual -->
+     <TextView
+         android:id="@+id/txtClima"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="32dp"
+-        android:text="clima"
++        android:text="23°"
+         android:textSize="48sp"
+-        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginTop="16dp"
++        app:layout_constraintTop_toBottomOf="@id/imageView"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
++    <!-- Saludo -->
+     <TextView
+         android:id="@+id/txtSaludo"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="16dp"
+-        android:text="BuenosDias"
+-        android:textSize="24sp"
+-        app:layout_constraintEnd_toEndOf="parent"
++        android:text="Buenos días"
++        android:textSize="20sp"
++        android:layout_marginTop="8dp"
++        app:layout_constraintTop_toBottomOf="@id/txtClima"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/txtClima" />
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
++    <!-- ICONO + ETIQUETA: Amanecer -->
+     <ImageView
+-        android:id="@+id/imgDiv"
++        android:id="@+id/imageView12"
++        android:layout_width="24dp"
++        android:layout_height="24dp"
++        app:layout_constraintBottom_toTopOf="@id/textView6"
++        app:layout_constraintStart_toStartOf="parent"
++        android:layout_marginStart="16dp"
++        app:srcCompat="@drawable/sol" />
++
++    <TextView
++        android:id="@+id/textView6"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="16dp"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/txtSaludo"
+-        app:srcCompat="@drawable/check_indeterminate_small_24px" />
++        android:text="Amanecer"
++        android:textSize="14sp"
++        app:layout_constraintBottom_toTopOf="@id/txtHoraAmanecer"
++        app:layout_constraintStart_toStartOf="@id/imageView12" />
+ 
+     <TextView
+         android:id="@+id/txtHoraAmanecer"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="16dp"
+-        android:layout_marginEnd="8dp"
+-        android:layout_marginBottom="16dp"
+         android:text="6:00 hrs"
+         android:textSize="16sp"
+         app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+-        app:layout_constraintStart_toStartOf="parent" />
++        app:layout_constraintStart_toStartOf="@id/imageView12"
++        android:layout_marginBottom="8dp" />
++
++    <!-- ICONO + ETIQUETA: Temperatura -->
++    <ImageView
++        android:id="@+id/imageView11"
++        android:layout_width="24dp"
++        android:layout_height="24dp"
++        app:layout_constraintBottom_toTopOf="@id/txtTemp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginStart="0dp"
++        android:layout_marginEnd="0dp"
++        app:srcCompat="@drawable/temperatura" />
++
++    <TextView
++        android:id="@+id/txtTemp"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Temperatura"
++        app:layout_constraintBottom_toTopOf="@id/txtTemperatura"
++        app:layout_constraintStart_toStartOf="@id/imageView11"
++        app:layout_constraintEnd_toEndOf="@id/imageView11" />
+ 
+     <TextView
+         android:id="@+id/txtTemperatura"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginEnd="8dp"
+-        android:layout_marginBottom="16dp"
+-        android:text="23° "
++        android:text="23°"
+         android:textSize="16sp"
+         app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+-        app:layout_constraintStart_toEndOf="@+id/imageView8" />
++        app:layout_constraintStart_toStartOf="@id/imageView11"
++        app:layout_constraintEnd_toEndOf="@id/imageView11"
++        android:layout_marginBottom="8dp" />
+ 
++    <!-- ICONO + ETIQUETA: Viento -->
+     <ImageView
+-        android:id="@+id/imageView8"
++        android:id="@+id/imageView10"
+         android:layout_width="24dp"
+         android:layout_height="24dp"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginEnd="8dp"
+-        android:layout_marginBottom="16dp"
+-        android:rotation="180"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toStartOf="@+id/txtTemperatura"
+-        app:layout_constraintStart_toEndOf="@+id/txtHoraAmanecer"
+-        app:srcCompat="@drawable/linea_horizontal" />
+-
+-    <ImageView
+-        android:id="@+id/imageView9"
+-        android:layout_width="24dp"
+-        android:layout_height="24dp"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginEnd="8dp"
+-        android:layout_marginBottom="16dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toStartOf="@+id/txtVelocidadV"
+-        app:layout_constraintStart_toEndOf="@+id/txtTemperatura"
+-        app:srcCompat="@drawable/linea_horizontal" />
+-
+-    <TextView
+-        android:id="@+id/txtVelocidadV"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="8dp"
++        app:layout_constraintBottom_toTopOf="@id/txtVient"
++        app:layout_constraintEnd_toEndOf="parent"
+         android:layout_marginEnd="16dp"
+-        android:layout_marginBottom="16dp"
+-        android:text="4 m/s"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toEndOf="@+id/imageView9" />
+-
+-    <ImageView
+-        android:id="@+id/imageView10"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        app:layout_constraintBottom_toTopOf="@+id/txtVient"
+-        app:layout_constraintEnd_toEndOf="@+id/txtVient"
+-        app:layout_constraintStart_toStartOf="@+id/txtVient"
+         app:srcCompat="@drawable/aire" />
+ 
+     <TextView
+         android:id="@+id/txtVient"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginBottom="2dp"
+-        android:text="viento"
+-        app:layout_constraintBottom_toTopOf="@+id/txtVelocidadV"
+-        app:layout_constraintEnd_toEndOf="@+id/txtVelocidadV"
+-        app:layout_constraintStart_toStartOf="@+id/txtVelocidadV" />
++        android:text="Viento"
++        app:layout_constraintBottom_toTopOf="@id/txtVelocidadV"
++        app:layout_constraintEnd_toEndOf="@id/imageView10" />
+ 
+     <TextView
+-        android:id="@+id/txtTemp"
++        android:id="@+id/txtVelocidadV"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginBottom="2dp"
+-        android:text="Temperatura"
+-        app:layout_constraintBottom_toTopOf="@+id/txtTemperatura"
+-        app:layout_constraintEnd_toEndOf="@+id/txtTemperatura"
+-        app:layout_constraintStart_toStartOf="@+id/txtTemperatura" />
+-
+-    <ImageView
+-        android:id="@+id/imageView11"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        app:layout_constraintBottom_toTopOf="@+id/txtTemp"
+-        app:layout_constraintEnd_toEndOf="@+id/txtTemp"
+-        app:layout_constraintStart_toStartOf="@+id/txtTemp"
+-        app:srcCompat="@drawable/temperatura" />
+-
+-    <TextView
+-        android:id="@+id/textView6"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginBottom="2dp"
+-        android:text="Amanecer"
+-        app:layout_constraintBottom_toTopOf="@+id/txtHoraAmanecer"
+-        app:layout_constraintEnd_toEndOf="@+id/txtHoraAmanecer"
+-        app:layout_constraintStart_toStartOf="@+id/txtHoraAmanecer" />
+-
+-    <ImageView
+-        android:id="@+id/imageView12"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+-        app:layout_constraintEnd_toEndOf="@+id/textView6"
+-        app:layout_constraintStart_toStartOf="@+id/textView6"
+-        app:srcCompat="@drawable/sol" />
++        android:text="4 m/s"
++        android:textSize="16sp"
++        android:layout_marginBottom="8dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="@id/imageView10" />
+ 
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/res/layout/fragment_clima.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_clima.xml b/app/src/main/res/layout/fragment_clima.xml
+new file mode 100644
+--- /dev/null	(date 1749672265484)
++++ b/app/src/main/res/layout/fragment_clima.xml	(date 1749672265484)
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <!-- Tarjeta de clima actual -->
++    <androidx.cardview.widget.CardView
++        android:id="@+id/cardClima"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        app:cardCornerRadius="24dp"
++        app:cardElevation="8dp"
++        android:layout_margin="16dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical"
++            android:padding="16dp"
++            android:gravity="center">
++
++            <ImageView
++                android:id="@+id/imageView"
++                android:layout_width="100dp"
++                android:layout_height="100dp"
++                android:layout_gravity="center"
++                android:src="@drawable/cloud_sun"
++                android:contentDescription="@string/weather_icon" />
++
++            <TextView
++                android:id="@+id/txtClima"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="22°C"
++                android:textSize="48sp"
++                android:textStyle="bold"
++                android:layout_marginTop="8dp"
++                android:layout_gravity="center" />
++
++            <TextView
++                android:id="@+id/txtSaludo"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="GOOD MORNING"
++                android:textSize="16sp"
++                android:layout_gravity="center" />
++
++            <TextView
++                android:id="@+id/txtNomCiudad"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="CDMX"
++                android:textSize="16sp"
++                android:layout_gravity="center" />
++
++            <View
++                android:layout_width="match_parent"
++                android:layout_height="1dp"
++                android:background="#CCCCCC"
++                android:layout_marginVertical="8dp"/>
++
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:orientation="horizontal"
++                android:gravity="center"
++                android:weightSum="3">
++
++                <!-- SUNRISE -->
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_weight="1"
++                    android:orientation="vertical"
++                    android:gravity="center">
++
++                    <ImageView
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:src="@drawable/sol" />
++
++                    <TextView
++                        android:layout_width="wrap_content"
++                        android:layout_height="wrap_content"
++                        android:text="Amanecer"
++                        android:textSize="12sp" />
++                    <TextView
++                        android:id="@+id/txtHoraAmanecer"
++                        android:layout_width="wrap_content"
++                        android:layout_height="wrap_content"
++                        android:text="7:00"
++                        android:textSize="14sp"/>
++                </LinearLayout>
++
++                <!-- WIND -->
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_weight="1"
++                    android:orientation="vertical"
++                    android:gravity="center">
++
++                    <ImageView
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:src="@drawable/aire"/>
++
++                    <TextView
++                        android:layout_width="wrap_content"
++                        android:layout_height="wrap_content"
++                        android:text="Viento"
++                        android:textSize="12sp" />
++                    <TextView
++                        android:id="@+id/txtVelocidadV"
++                        android:layout_width="wrap_content"
++                        android:layout_height="wrap_content"
++                        android:text="4m/s"
++                        android:textSize="14sp"/>
++                </LinearLayout>
++
++                <!-- TEMP -->
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_weight="1"
++                    android:orientation="vertical"
++                    android:gravity="center">
++
++                    <ImageView
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:src="@drawable/temperatura"/>
++
++                    <TextView
++                        android:layout_width="wrap_content"
++                        android:layout_height="wrap_content"
++                        android:text="Temperatura"
++                        android:textSize="12sp" />
++                    <TextView
++                        android:id="@+id/txtTemperatura"
++                        android:layout_width="wrap_content"
++                        android:layout_height="wrap_content"
++                        android:text="23°"
++                        android:textSize="14sp"/>
++                </LinearLayout>
++            </LinearLayout>
++        </LinearLayout>
++    </androidx.cardview.widget.CardView>
++
++    <!-- RecyclerView para pronóstico diario -->
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/recyclerForecast"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        android:paddingTop="8dp"
++        android:paddingBottom="8dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/cardClima"
++        tools:listitem="@layout/item_forecast_day"
++        android:clipToPadding="false"
++        android:scrollbars="vertical"/>
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/res/layout/item_forecast_day.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_forecast_day.xml b/app/src/main/res/layout/item_forecast_day.xml
+new file mode 100644
+--- /dev/null	(date 1749672265484)
++++ b/app/src/main/res/layout/item_forecast_day.xml	(date 1749672265484)
+@@ -0,0 +1,62 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:paddingVertical="12dp">
++
++    <!-- Día de la semana -->
++    <TextView
++        android:id="@+id/tvDay"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Mon"
++        android:textSize="16sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent" />
++
++    <!-- Ícono del clima -->
++
++    <!-- Temperatura máxima -->
++    <ImageView
++        android:id="@+id/imgWeatherIcon"
++        android:layout_width="40dp"
++        android:layout_height="40dp"
++        android:layout_marginStart="76dp"
++        android:contentDescription="@string/weather_icon"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toEndOf="@id/tvDay"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.0"
++        app:srcCompat="@drawable/cloud_sun" />
++
++    <TextView
++        android:id="@+id/tvMaxTemp"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="24°"
++        android:textSize="16sp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toStartOf="@id/tvMinTemp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        android:layout_marginEnd="8dp" />
++
++    <!-- Temperatura mínima -->
++    <TextView
++        android:id="@+id/tvMinTemp"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="17°"
++        android:textSize="16sp"
++        android:textColor="#888888"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        android:layout_marginEnd="8dp" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25,_9_37 AM_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25,_9_37 AM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25,_9_37 AM_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1749672265481)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25,_9_37 AM_[Changes]/shelved.patch	(date 1749672265481)
+@@ -0,0 +1,15 @@
++Index: .idea/misc.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/misc.xml b/.idea/misc.xml
++--- a/.idea/misc.xml	(revision 0ec25bfbae9dee191c47125fc0328f8d0c2a1540)
+++++ b/.idea/misc.xml	(date 1749656194336)
++@@ -1,4 +1,3 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++   <component name="ExternalStorageConfigurationManager" enabled="true" />
++   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7">
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25__9_37AM__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25__9_37AM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25__9_37AM__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1749672265481)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25__9_37AM__Changes_.xml	(date 1749672265481)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_11_06_25,_9_37 AM_[Changes]" date="1749656249373" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_06_25,_9_37 AM_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11/06/25, 9:37 AM [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: app/src/main/java/com/example/climasync/view/adapters/ForecastAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/climasync/view/adapters/ForecastAdapter.kt b/app/src/main/java/com/example/climasync/view/adapters/ForecastAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1749672265483)
++++ b/app/src/main/java/com/example/climasync/view/adapters/ForecastAdapter.kt	(date 1749672265483)
+@@ -0,0 +1,51 @@
++package com.example.climasync.view.adapters
++
++import android.view.LayoutInflater
++import android.view.ViewGroup
++import androidx.recyclerview.widget.RecyclerView
++import com.bumptech.glide.Glide
++import com.example.climasync.databinding.ItemForecastDayBinding
++import com.example.climasync.model.ForecastResponse.ForecastDay
++import java.text.SimpleDateFormat
++import java.util.*
++
++class ForecastAdapter(
++    private val items: MutableList<ForecastDay> = mutableListOf()
++
++) : RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
++
++    inner class ForecastViewHolder(val binding: ItemForecastDayBinding) : RecyclerView.ViewHolder(binding.root)
++
++
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
++        val binding = ItemForecastDayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
++        return ForecastViewHolder(binding)
++    }
++
++    override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
++        val forecast = items[position]
++
++        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
++        val outputFormat = SimpleDateFormat("EEEE", Locale("es", "MX"))
++        val date = inputFormat.parse(forecast.date)
++        val dayName = outputFormat.format(date ?: Date())
++
++        with(holder.binding) {
++            tvDay.text = dayName.replaceFirstChar { it.uppercaseChar() }
++            tvMaxTemp.text = "${forecast.day.maxTempC.toInt()}°"
++            tvMinTemp.text = "${forecast.day.minTempC.toInt()}°"
++
++            Glide.with(imgWeatherIcon.context)
++                .load("https:${forecast.day.condition.icon}")
++                .into(imgWeatherIcon)
++        }
++    }
++
++    override fun getItemCount() = items.size
++
++    fun updateForecast(newItems: List<ForecastDay>) {
++        items.clear()
++        items.addAll(newItems)
++        notifyDataSetChanged()
++    }
++}
+Index: app/src/main/java/com/example/climasync/model/ForecastResponse.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.climasync.model\n\nimport com.google.gson.annotations.SerializedName\n\ndata class ForecastResponse(\n    val location: Location,\n    val current: CurrentWeather,\n    val forecast: Forecast\n) {\n\n    data class Location(\n        val name: String,\n        val region: String,\n        val country: String,\n        val lat: Double,\n        val lon: Double,\n        val tz_id: String,\n        val localtime_epoch: Long,\n        val localtime: String\n    )\n\n    data class CurrentWeather(\n        val last_updated_epoch: Long,\n        val last_updated: String,\n        val temp_c: Double,\n        val temp_f: Double,\n        val is_day: Int,\n        val condition: Condition,\n        val wind_mph: Double,\n        val wind_kph: Double,\n        val wind_degree: Int,\n        val wind_dir: String,\n        val pressure_mb: Double,\n        val pressure_in: Double,\n        val precip_mm: Double,\n        val precip_in: Double,\n        val humidity: Int,\n        val cloud: Int,\n        val feelslike_c: Double,\n        val feelslike_f: Double,\n        val vis_km: Double,\n        val vis_miles: Double,\n        val uv: Double,\n        val gust_mph: Double,\n        val gust_kph: Double\n    )\n\n    data class Forecast(\n        val forecastday: List<ForecastDay>\n    )\n\n    data class ForecastDay(\n        val date: String,\n        val date_epoch: Long,\n        val day: Day,\n        val astro: Astro,\n        val hour: List<Hour>\n    )\n\n    data class Day(\n        val maxtemp_c: Double,\n        val maxtemp_f: Double,\n        val mintemp_c: Double,\n        val mintemp_f: Double,\n        val avgtemp_c: Double,\n        val avgtemp_f: Double,\n        val maxwind_mph: Double,\n        val maxwind_kph: Double,\n        val totalprecip_mm: Double,\n        val totalprecip_in: Double,\n        val totalsnow_cm: Double,\n        val avgvis_km: Double,\n        val avgvis_miles: Double,\n        val avghumidity: Double,\n        val daily_will_it_rain: Int,\n        val daily_chance_of_rain: Int,\n        val daily_will_it_snow: Int,\n        val daily_chance_of_snow: Int,\n        val condition: Condition,\n        val uv: Double\n    )\n\n    data class Astro(\n        val sunrise: String,\n        val sunset: String,\n        val moonrise: String,\n        val moonset: String,\n        val moon_phase: String,\n        val moon_illumination: Int,\n        val is_moon_up: Int,\n        val is_sun_up: Int\n    )\n\n    data class Hour(\n        val time_epoch: Long,\n        val time: String,\n        val temp_c: Double,\n        val temp_f: Double,\n        val is_day: Int,\n        val condition: Condition,\n        val wind_mph: Double,\n        val wind_kph: Double,\n        val wind_degree: Int,\n        val wind_dir: String,\n        val pressure_mb: Double,\n        val pressure_in: Double,\n        val precip_mm: Double,\n        val precip_in: Double,\n        val humidity: Int,\n        val cloud: Int,\n        val feelslike_c: Double,\n        val feelslike_f: Double,\n        val windchill_c: Double,\n        val windchill_f: Double,\n        val heatindex_c: Double,\n        val heatindex_f: Double,\n        val dewpoint_c: Double,\n        val dewpoint_f: Double,\n        val will_it_rain: Int,\n        val chance_of_rain: Int,\n        val will_it_snow: Int,\n        val chance_of_snow: Int,\n        val vis_km: Double,\n        val vis_miles: Double,\n        val gust_mph: Double,\n        val gust_kph: Double,\n        val uv: Double\n    )\n\n    data class Condition(\n        val text: String,\n        val icon: String,\n        val code: Int\n    )\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/climasync/model/ForecastResponse.kt b/app/src/main/java/com/example/climasync/model/ForecastResponse.kt
+--- a/app/src/main/java/com/example/climasync/model/ForecastResponse.kt	(revision e9f2b09cea772dd038dc169c8f18a71cea8e30b1)
++++ b/app/src/main/java/com/example/climasync/model/ForecastResponse.kt	(date 1749672265482)
+@@ -2,6 +2,8 @@
+ 
+ import com.google.gson.annotations.SerializedName
+ 
++
++
+ data class ForecastResponse(
+     val location: Location,
+     val current: CurrentWeather,
+@@ -14,35 +16,35 @@
+         val country: String,
+         val lat: Double,
+         val lon: Double,
+-        val tz_id: String,
+-        val localtime_epoch: Long,
+-        val localtime: String
++        @SerializedName("tz_id") val tzId: String,
++        @SerializedName("localtime_epoch") val localtimeEpoch: Long,
++        @SerializedName("localtime") val localtime: String
+     )
+ 
+     data class CurrentWeather(
+-        val last_updated_epoch: Long,
+-        val last_updated: String,
+-        val temp_c: Double,
+-        val temp_f: Double,
+-        val is_day: Int,
++        @SerializedName("last_updated_epoch") val lastUpdatedEpoch: Long,
++        @SerializedName("last_updated") val lastUpdated: String,
++        @SerializedName("temp_c") val tempC: Double,
++        @SerializedName("temp_f") val tempF: Double,
++        @SerializedName("is_day") val isDay: Int,
+         val condition: Condition,
+-        val wind_mph: Double,
+-        val wind_kph: Double,
+-        val wind_degree: Int,
+-        val wind_dir: String,
+-        val pressure_mb: Double,
+-        val pressure_in: Double,
+-        val precip_mm: Double,
+-        val precip_in: Double,
++        @SerializedName("wind_mph") val windMph: Double,
++        @SerializedName("wind_kph") val windKph: Double,
++        @SerializedName("wind_degree") val windDegree: Int,
++        @SerializedName("wind_dir") val windDir: String,
++        @SerializedName("pressure_mb") val pressureMb: Double,
++        @SerializedName("pressure_in") val pressureIn: Double,
++        @SerializedName("precip_mm") val precipMm: Double,
++        @SerializedName("precip_in") val precipIn: Double,
+         val humidity: Int,
+         val cloud: Int,
+-        val feelslike_c: Double,
+-        val feelslike_f: Double,
+-        val vis_km: Double,
+-        val vis_miles: Double,
++        @SerializedName("feelslike_c") val feelsLikeC: Double,
++        @SerializedName("feelslike_f") val feelsLikeF: Double,
++        @SerializedName("vis_km") val visKm: Double,
++        @SerializedName("vis_miles") val visMiles: Double,
+         val uv: Double,
+-        val gust_mph: Double,
+-        val gust_kph: Double
++        @SerializedName("gust_mph") val gustMph: Double,
++        @SerializedName("gust_kph") val gustKph: Double
+     )
+ 
+     data class Forecast(
+@@ -51,31 +53,31 @@
+ 
+     data class ForecastDay(
+         val date: String,
+-        val date_epoch: Long,
++        @SerializedName("date_epoch") val dateEpoch: Long,
+         val day: Day,
+         val astro: Astro,
+         val hour: List<Hour>
+     )
+ 
+     data class Day(
+-        val maxtemp_c: Double,
+-        val maxtemp_f: Double,
+-        val mintemp_c: Double,
+-        val mintemp_f: Double,
+-        val avgtemp_c: Double,
+-        val avgtemp_f: Double,
+-        val maxwind_mph: Double,
+-        val maxwind_kph: Double,
+-        val totalprecip_mm: Double,
+-        val totalprecip_in: Double,
+-        val totalsnow_cm: Double,
+-        val avgvis_km: Double,
+-        val avgvis_miles: Double,
+-        val avghumidity: Double,
+-        val daily_will_it_rain: Int,
+-        val daily_chance_of_rain: Int,
+-        val daily_will_it_snow: Int,
+-        val daily_chance_of_snow: Int,
++        @SerializedName("maxtemp_c") val maxTempC: Double,
++        @SerializedName("maxtemp_f") val maxTempF: Double,
++        @SerializedName("mintemp_c") val minTempC: Double,
++        @SerializedName("mintemp_f") val minTempF: Double,
++        @SerializedName("avgtemp_c") val avgTempC: Double,
++        @SerializedName("avgtemp_f") val avgTempF: Double,
++        @SerializedName("maxwind_mph") val maxWindMph: Double,
++        @SerializedName("maxwind_kph") val maxWindKph: Double,
++        @SerializedName("totalprecip_mm") val totalPrecipMm: Double,
++        @SerializedName("totalprecip_in") val totalPrecipIn: Double,
++        @SerializedName("totalsnow_cm") val totalSnowCm: Double,
++        @SerializedName("avgvis_km") val avgVisKm: Double,
++        @SerializedName("avgvis_miles") val avgVisMiles: Double,
++        @SerializedName("avghumidity") val avgHumidity: Double,
++        @SerializedName("daily_will_it_rain") val dailyWillItRain: Int,
++        @SerializedName("daily_chance_of_rain") val dailyChanceOfRain: Int,
++        @SerializedName("daily_will_it_snow") val dailyWillItSnow: Int,
++        @SerializedName("daily_chance_of_snow") val dailyChanceOfSnow: Int,
+         val condition: Condition,
+         val uv: Double
+     )
+@@ -85,45 +87,45 @@
+         val sunset: String,
+         val moonrise: String,
+         val moonset: String,
+-        val moon_phase: String,
+-        val moon_illumination: Int,
+-        val is_moon_up: Int,
+-        val is_sun_up: Int
++        @SerializedName("moon_phase") val moonPhase: String,
++        @SerializedName("moon_illumination") val moonIllumination: Int,
++        @SerializedName("is_moon_up") val isMoonUp: Int,
++        @SerializedName("is_sun_up") val isSunUp: Int
+     )
+ 
+     data class Hour(
+-        val time_epoch: Long,
++        @SerializedName("time_epoch") val timeEpoch: Long,
+         val time: String,
+-        val temp_c: Double,
+-        val temp_f: Double,
+-        val is_day: Int,
++        @SerializedName("temp_c") val tempC: Double,
++        @SerializedName("temp_f") val tempF: Double,
++        @SerializedName("is_day") val isDay: Int,
+         val condition: Condition,
+-        val wind_mph: Double,
+-        val wind_kph: Double,
+-        val wind_degree: Int,
+-        val wind_dir: String,
+-        val pressure_mb: Double,
+-        val pressure_in: Double,
+-        val precip_mm: Double,
+-        val precip_in: Double,
++        @SerializedName("wind_mph") val windMph: Double,
++        @SerializedName("wind_kph") val windKph: Double,
++        @SerializedName("wind_degree") val windDegree: Int,
++        @SerializedName("wind_dir") val windDir: String,
++        @SerializedName("pressure_mb") val pressureMb: Double,
++        @SerializedName("pressure_in") val pressureIn: Double,
++        @SerializedName("precip_mm") val precipMm: Double,
++        @SerializedName("precip_in") val precipIn: Double,
+         val humidity: Int,
+         val cloud: Int,
+-        val feelslike_c: Double,
+-        val feelslike_f: Double,
+-        val windchill_c: Double,
+-        val windchill_f: Double,
+-        val heatindex_c: Double,
+-        val heatindex_f: Double,
+-        val dewpoint_c: Double,
+-        val dewpoint_f: Double,
+-        val will_it_rain: Int,
+-        val chance_of_rain: Int,
+-        val will_it_snow: Int,
+-        val chance_of_snow: Int,
+-        val vis_km: Double,
+-        val vis_miles: Double,
+-        val gust_mph: Double,
+-        val gust_kph: Double,
++        @SerializedName("feelslike_c") val feelsLikeC: Double,
++        @SerializedName("feelslike_f") val feelsLikeF: Double,
++        @SerializedName("windchill_c") val windChillC: Double,
++        @SerializedName("windchill_f") val windChillF: Double,
++        @SerializedName("heatindex_c") val heatIndexC: Double,
++        @SerializedName("heatindex_f") val heatIndexF: Double,
++        @SerializedName("dewpoint_c") val dewPointC: Double,
++        @SerializedName("dewpoint_f") val dewPointF: Double,
++        @SerializedName("will_it_rain") val willItRain: Int,
++        @SerializedName("chance_of_rain") val chanceOfRain: Int,
++        @SerializedName("will_it_snow") val willItSnow: Int,
++        @SerializedName("chance_of_snow") val chanceOfSnow: Int,
++        @SerializedName("vis_km") val visKm: Double,
++        @SerializedName("vis_miles") val visMiles: Double,
++        @SerializedName("gust_mph") val gustMph: Double,
++        @SerializedName("gust_kph") val gustKph: Double,
+         val uv: Double
+     )
+ 
+@@ -132,5 +134,4 @@
+         val icon: String,
+         val code: Int
+     )
+-
+-}
+\ No newline at end of file
++}
+Index: app/src/main/java/com/example/climasync/view/ClimaFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/climasync/view/ClimaFragment.kt b/app/src/main/java/com/example/climasync/view/ClimaFragment.kt
+new file mode 100644
+--- /dev/null	(date 1749672265482)
++++ b/app/src/main/java/com/example/climasync/view/ClimaFragment.kt	(date 1749672265482)
+@@ -0,0 +1,177 @@
++package com.example.climasync.view
++
++import android.Manifest
++import android.content.pm.PackageManager
++import android.icu.text.SimpleDateFormat
++import android.os.Bundle
++import android.util.Log
++import android.view.*
++import android.widget.Toast
++import androidx.core.content.ContextCompat
++import androidx.fragment.app.Fragment
++import androidx.fragment.app.viewModels
++import androidx.lifecycle.lifecycleScope
++import androidx.recyclerview.widget.LinearLayoutManager
++import com.bumptech.glide.Glide
++import com.example.climasync.R
++import com.example.climasync.core.LocationProvider
++import com.example.climasync.databinding.FragmentClimaBinding
++import com.example.climasync.model.WeatherResponse
++import com.example.climasync.utils.FragmentCommunicator
++import com.example.climasync.view.adapters.ForecastAdapter
++import com.example.climasync.viewModel.ForecastViewModel
++import kotlinx.coroutines.launch
++import java.util.*
++
++class ClimaFragment : Fragment() {
++
++    private var _binding: FragmentClimaBinding? = null
++    private val binding get() = _binding!!
++    private lateinit var communicator: FragmentCommunicator
++    private val viewModel: ForecastViewModel by viewModels()
++    private lateinit var forecastAdapter: ForecastAdapter
++
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
++    ): View {
++        _binding = FragmentClimaBinding.inflate(inflater, container, false)
++        communicator = requireActivity() as FragmentCommunicator
++        return binding.root
++    }
++
++    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
++        super.onViewCreated(view, savedInstanceState)
++
++        setupRecyclerView()         // 👈 PRIMERO
++        setupObservers()            // luego observar
++        checkLocationPermissionAndFetch()
++    }
++
++
++    private fun setupRecyclerView() {
++        forecastAdapter = ForecastAdapter()
++        binding.recyclerForecast.apply {
++            layoutManager = LinearLayoutManager(requireContext())
++            adapter = forecastAdapter
++        }
++        Log.d("DEBUG_RECYCLER", "Adapter asignado correctamente")
++    }
++    private fun setupObservers() {
++        viewModel.loaderState.observe(viewLifecycleOwner) {
++            communicator.showLoader(it)
++        }
++
++        viewModel.mensajeweather.observe(viewLifecycleOwner) { weather ->
++            weather?.let { showWeatherData(it) } ?: showErrorState()
++        }
++
++        viewModel.forecast.observe(viewLifecycleOwner) { forecastList ->
++            Log.d("DEBUG_FORECAST", "Forecast recibido con ${forecastList.size} elementos")
++            forecastAdapter.updateForecast(forecastList)
++            val sunrise = forecastList.firstOrNull()?.astro?.sunrise
++            binding.txtHoraAmanecer.text = sunrise ?: getString(R.string.unknown_time)
++        }
++    }
++
++    private fun checkLocationPermissionAndFetch() {
++        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
++            == PackageManager.PERMISSION_GRANTED) {
++            getUserLocationAndWeather()
++        } else {
++            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
++        }
++    }
++
++    private fun getUserLocationAndWeather() {
++        lifecycleScope.launch {
++            try {
++                val location = LocationProvider.getInstance(requireContext()).getCurrentLocation()
++                if (location != null) {
++                    viewModel.fetchWeatherByCoordinates(location.latitude, location.longitude)
++                } else {
++                    showDefaultLocation()
++                }
++            } catch (e: Exception) {
++                showDefaultLocation()
++            }
++        }
++    }
++
++    private fun showDefaultLocation() {
++        Toast.makeText(requireContext(), "Usando ubicación por defecto", Toast.LENGTH_SHORT).show()
++        viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // Nueva York por defecto
++    }
++
++    private fun showWeatherData(weather: WeatherResponse) = with(binding) {
++        txtClima.text = getString(R.string.temperature_format, weather.current.tempC)
++        txtNomCiudad.text = weather.location.name.ifBlank { getString(R.string.unknown_location) }
++
++        txtVelocidadV.text = getString(R.string.wind_speed_format, weather.current.windKph)
++        txtTemperatura.text = getString(R.string.temperature_format, weather.current.tempC)
++
++        txtSaludo.text = getWeatherGreeting(weather.current.condition.text ?: "")
++
++        Glide.with(this@ClimaFragment)
++            .load("https:${weather.current.condition.icon}")
++            .placeholder(R.drawable.ic_weather_placeholder)
++            .error(R.drawable.ic_weather_error)
++            .into(imageView)
++    }
++
++    private fun formatDateTime(dateTime: String?): String {
++        return try {
++            val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
++            val date = inputFormat.parse(dateTime ?: "") ?: return getString(R.string.unknown_time)
++            val outputFormat = SimpleDateFormat("EEEE, d 'de' MMMM - HH:mm", Locale("es", "MX"))
++            outputFormat.format(date)
++        } catch (e: Exception) {
++            getString(R.string.unknown_time)
++        }
++    }
++
++    private fun getWeatherGreeting(condition: String): String {
++        val lower = condition.lowercase(Locale.getDefault())
++
++        val emoji = when {
++            "sunny" in lower || "clear" in lower -> "☀️"
++            "cloudy" in lower -> "☁️"
++            "rain" in lower || "drizzle" in lower -> "🌧️"
++            "thunder" in lower -> "⛈️"
++            "snow" in lower || "sleet" in lower -> "❄️"
++            "fog" in lower || "mist" in lower -> "🌫️"
++            else -> ""
++        }
++
++        val translation = mapOf(
++            "sunny" to "soleado", "clear" to "despejado",
++            "partly cloudy" to "parcialmente nublado", "cloudy" to "nublado",
++            "rain" to "lluvia", "light rain" to "lluvia ligera", "drizzle" to "llovizna",
++            "snow" to "nieve", "thunderstorm" to "tormenta", "fog" to "niebla"
++        )[lower] ?: condition
++
++        return "$emoji $translation"
++    }
++
++    private fun showErrorState() {
++        binding.txtNomCiudad.text = getString(R.string.error_loading_data)
++    }
++
++    override fun onRequestPermissionsResult(
++        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
++    ) {
++        if (requestCode == 1001 && grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
++            getUserLocationAndWeather()
++        } else {
++            showDefaultLocation()
++        }
++    }
++
++    override fun onDestroyView() {
++        super.onDestroyView()
++        _binding = null
++    }
++
++    companion object {
++        fun newInstance() = ClimaFragment()
++    }
++}
+Index: app/src/main/java/com/example/climasync/model/WeatherResponse.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.climasync.model\n\nimport com.google.gson.annotations.SerializedName\n\n\ndata class WeatherResponse (\n    val location: Location,\n    val current: Current\n){\n\ndata class Location(\n\n    val name: String,\n    val region: String,\n    val country: String,\n    val lat: Double,\n    val lon: Double,\n    @SerializedName(\"tz_id\") val tzId: String,\n    val localTime: String\n)\n\ndata class Current(\n    @SerializedName(\"temp_c\") val tempC: Double,\n    @SerializedName(\"temp_f\") val tempF: Double,\n    val condition: Condition,\n    @SerializedName(\"wind_mph\") val windMph: Double,\n    @SerializedName(\"wind_kph\") val windKph: Double,\n    @SerializedName(\"wind_degree\") val windDegree: Int,\n    @SerializedName(\"wind_dir\") val windDir: String,\n    val humidity: Int,\n    val uv: Double,\n    @SerializedName(\"feelslike_c\") val feelsLikeC: Double\n)\n\ndata class Condition(\n    val text: String,\n    val icon: String,\n    val code: Int\n)\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/climasync/model/WeatherResponse.kt b/app/src/main/java/com/example/climasync/model/WeatherResponse.kt
+--- a/app/src/main/java/com/example/climasync/model/WeatherResponse.kt	(revision e9f2b09cea772dd038dc169c8f18a71cea8e30b1)
++++ b/app/src/main/java/com/example/climasync/model/WeatherResponse.kt	(date 1749672265482)
+@@ -16,7 +16,8 @@
+     val lat: Double,
+     val lon: Double,
+     @SerializedName("tz_id") val tzId: String,
+-    val localTime: String
++    @SerializedName("localtime") val localTime: String
++
+ )
+ 
+ data class Current(
+Index: app/src/main/java/com/example/climasync/view/WeatherFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.climasync.view\n\nimport android.icu.text.SimpleDateFormat\nimport android.os.Bundle\nimport androidx.fragment.app.Fragment\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport android.widget.Toast\nimport androidx.fragment.app.viewModels\nimport androidx.lifecycle.lifecycleScope\nimport com.bumptech.glide.Glide\nimport com.example.climasync.databinding.FragmentWeatherBinding\nimport com.example.climasync.model.WeatherResponse\nimport com.example.climasync.utils.FragmentCommunicator\nimport com.example.climasync.viewModel.WeatherViewModel\nimport java.util.Locale\nimport com.example.climasync.R\nimport com.example.climasync.core.LocationProvider\nimport kotlinx.coroutines.launch\nimport android.Manifest\nimport android.content.pm.PackageManager\n\n\n/**\n * Fragment that displays weather information for a given location.\n * Uses [WeatherViewModel] to fetch and manage weather data.\n */\nclass WeatherFragment : Fragment() {\n\n    private var _binding: FragmentWeatherBinding? = null\n    private val binding get() = _binding!!\n    private lateinit var communicator: FragmentCommunicator\n    private val viewModel: WeatherViewModel by viewModels()\n\n    override fun onCreateView(\n        inflater: LayoutInflater,\n        container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View {\n        _binding = FragmentWeatherBinding.inflate(inflater, container, false)\n        communicator = requireActivity() as HomeActivity\n        return binding.root\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        setupObservers()\n        if (LocationProvider.getInstance(requireContext()).hasLocationPermission(requireContext())) {\n            getUserLocationAndWeather()\n        } else {\n            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)\n        }\n    }\n\n    private fun setupObservers() {\n        viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->\n            communicator.showLoader(loaderState)\n        }\n\n        viewModel.mensajeweather.observe(viewLifecycleOwner) { weatherResponse ->\n            weatherResponse?.let {\n                showWeatherData(it)\n            } ?: run {\n                showErrorState()\n            }\n        }\n\n\n    }\n\n    private fun showWeatherData(weatherResponse: WeatherResponse) {\n        with(binding) {\n            txtNomCiudad.text = weatherResponse.location.name.ifEmpty { getString(R.string.unknown_location) }\n            txtDiaHora.text = formatDateTime(weatherResponse.location.localTime)\n            txtClima.text = getString(R.string.temperature_format, weatherResponse.current.tempC)\n            txtVelocidadV.text = getString(R.string.wind_speed_format, weatherResponse.current.windKph)\n            txtTemperatura.text = getString(R.string.temperature_format, weatherResponse.current.tempC)\n\n            weatherResponse.current.condition.text?.let { condition ->\n                txtSaludo.text = getWeatherGreeting(condition)\n            }\n\n            weatherResponse.current.condition.icon?.let { iconPath ->\n                Glide.with(this@WeatherFragment)\n                    .load(\"https:$iconPath\")\n                    .placeholder(R.drawable.ic_weather_placeholder)\n                    .error(R.drawable.ic_weather_error)\n                    .into(imageView)\n            }\n        }\n    }\n\n    private fun showErrorState() {\n        with(binding) {\n            txtNomCiudad.text = getString(R.string.error_loading_data)\n\n        }\n    }\n\n    private fun showError(errorMessage: String) {\n        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()\n    }\n\n    private fun getUserLocationAndWeather() {\n        lifecycleScope.launch {\n            try {\n                val location = LocationProvider.getInstance(requireContext()).getCurrentLocation()\n                if (location != null) {\n                    val lat = location.latitude\n                    val lon = location.longitude\n                    viewModel.fetchWeatherByCoordinates(lat, lon)\n                } else {\n                    // Ubicación nula, usar ubicación por defecto\n                    Toast.makeText(\n                        requireContext(),\n                        \"No se pudo obtener la ubicación actual. Usando ubicación por defecto.\",\n                        Toast.LENGTH_SHORT\n                    ).show()\n                    viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // NYC como ejemplo\n                }\n            } catch (e: Exception) {\n                Toast.makeText(\n                    requireContext(),\n                    \"Error al obtener ubicación: ${e.message}\",\n                    Toast.LENGTH_SHORT\n                ).show()\n                viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // NYC como ejemplo\n            }\n        }\n    }\n\n\n    // Extension functions for formatting\n    private fun formatDateTime(dateTimeString: String?): String {\n        if (dateTimeString.isNullOrEmpty()) return getString(R.string.unknown_time)\n        return try {\n            val inputFormat = SimpleDateFormat(\"yyyy-MM-dd HH:mm\", Locale.getDefault())\n            val date = inputFormat.parse(dateTimeString)\n            val outputFormat = SimpleDateFormat(\"EEEE, d MMMM - HH:mm\", Locale.getDefault())\n            outputFormat.format(date!!)\n        } catch (e: Exception) {\n            dateTimeString\n        }\n    }\n\n\n    private val weatherTranslations = mapOf(\n        // Condiciones despejadas/soleadas\n        \"sunny\" to \"soleado\",\n        \"clear\" to \"despejado\",\n\n        // Condiciones nubladas\n        \"partly cloudy\" to \"parcialmente nublado\",\n        \"cloudy\" to \"nublado\",\n        \"overcast\" to \"muy nublado\",\n\n        // Condiciones de lluvia\n        \"rain\" to \"lluvia\",\n        \"light rain\" to \"lluvia ligera\",\n        \"moderate rain\" to \"lluvia moderada\",\n        \"heavy rain\" to \"lluvia intensa\",\n        \"patchy rain\" to \"lluvia dispersa\",\n        \"drizzle\" to \"llovizna\",\n        \"freezing drizzle\" to \"llovizna helada\",\n\n        // Condiciones de tormenta\n        \"thunderstorm\" to \"tormenta\",\n        \"thunderstorm with light rain\" to \"tormenta con lluvia ligera\",\n        \"thunderstorm with rain\" to \"tormenta con lluvia\",\n        \"thunderstorm with heavy rain\" to \"tormenta con lluvia intensa\",\n\n        // Condiciones de nieve\n        \"snow\" to \"nieve\",\n        \"light snow\" to \"nieve ligera\",\n        \"heavy snow\" to \"nieve intensa\",\n        \"sleet\" to \"aguanieve\",\n        \"light sleet\" to \"aguanieve ligera\",\n        \"freezing rain\" to \"lluvia helada\",\n\n        // Condiciones especiales\n        \"fog\" to \"niebla\",\n        \"mist\" to \"neblina\",\n        \"haze\" to \"bruma\",\n        \"sand\" to \"tormenta de arena\",\n        \"dust\" to \"tormenta de polvo\"\n    )\n\n    private fun getWeatherGreeting(condition: String): String {\n        val lowerCondition = condition.lowercase(Locale.getDefault())\n\n        val emoji = when {\n            lowerCondition.contains(\"sunny\") || lowerCondition.contains(\"soleado\") ||\n                    lowerCondition.contains(\"clear\") || lowerCondition.contains(\"despejado\") -> \"☀\uFE0F\"\n\n            lowerCondition.contains(\"partly cloudy\") || lowerCondition.contains(\"parcialmente nublado\") -> \"⛅\"\n\n            lowerCondition.contains(\"cloudy\") || lowerCondition.contains(\"nublado\") ||\n                    lowerCondition.contains(\"overcast\") || lowerCondition.contains(\"muy nublado\") -> \"☁\uFE0F\"\n\n            lowerCondition.contains(\"rain\") || lowerCondition.contains(\"lluvia\") ||\n                    lowerCondition.contains(\"drizzle\") || lowerCondition.contains(\"llovizna\") -> \"\uD83C\uDF27\uFE0F\"\n\n            lowerCondition.contains(\"thunderstorm\") || lowerCondition.contains(\"tormenta\") -> \"⛈\uFE0F\"\n\n            lowerCondition.contains(\"snow\") || lowerCondition.contains(\"nieve\") ||\n                    lowerCondition.contains(\"sleet\") || lowerCondition.contains(\"aguanieve\") -> \"❄\uFE0F\"\n\n            lowerCondition.contains(\"fog\") || lowerCondition.contains(\"niebla\") ||\n                    lowerCondition.contains(\"mist\") || lowerCondition.contains(\"neblina\") -> \"\uD83C\uDF2B\uFE0F\"\n\n            else -> \"\"\n        }\n\n\n        val displayCondition = weatherTranslations[lowerCondition] ?: condition\n\n        return \"$emoji $displayCondition\"\n    }\n\n    override fun onRequestPermissionsResult(\n        requestCode: Int,\n        permissions: Array<out String>,\n        grantResults: IntArray\n    ) {\n        super.onRequestPermissionsResult(requestCode, permissions, grantResults)\n        when (requestCode) {\n            1001 -> {\n                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {\n                    getUserLocationAndWeather()\n                } else {\n                    // Permiso denegado, muestra un mensaje o usa una ubicación por defecto\n                    Toast.makeText(\n                        requireContext(),\n                        \"Permiso de ubicación denegado. Usando ubicación por defecto.\",\n                        Toast.LENGTH_SHORT\n                    ).show()\n                    // Puedes llamar a una ubicación por defecto aquí\n                    viewModel.fetchWeatherByCoordinates(40.7128, -74.0060) // NYC como ejemplo\n                }\n            }\n        }\n    }\n    override fun onDestroyView() {\n        super.onDestroyView()\n        _binding = null\n    }\n\n    companion object {\n        /**\n         * Factory method to create a new instance of this fragment.\n         */\n        fun newInstance() = WeatherFragment()\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/climasync/view/WeatherFragment.kt b/app/src/main/java/com/example/climasync/view/WeatherFragment.kt
+--- a/app/src/main/java/com/example/climasync/view/WeatherFragment.kt	(revision e9f2b09cea772dd038dc169c8f18a71cea8e30b1)
++++ b/app/src/main/java/com/example/climasync/view/WeatherFragment.kt	(date 1749672265483)
+@@ -22,10 +22,6 @@
+ import android.content.pm.PackageManager
+ 
+ 
+-/**
+- * Fragment that displays weather information for a given location.
+- * Uses [WeatherViewModel] to fetch and manage weather data.
+- */
+ class WeatherFragment : Fragment() {
+ 
+     private var _binding: FragmentWeatherBinding? = null
+@@ -65,6 +61,11 @@
+                 showErrorState()
+             }
+         }
++        viewModel.forecast.observe(viewLifecycleOwner) { forecastList ->
++            val sunrise = forecastList.firstOrNull()?.astro?.sunrise
++            binding.txtHoraAmanecer.text = sunrise ?: getString(R.string.unknown_time)
++        }
++
+ 
+ 
+     }
+@@ -137,7 +138,7 @@
+         return try {
+             val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+             val date = inputFormat.parse(dateTimeString)
+-            val outputFormat = SimpleDateFormat("EEEE, d MMMM - HH:mm", Locale.getDefault())
++            val outputFormat = SimpleDateFormat("EEEE, d 'de' MMMM - HH:mm", Locale("es", "MX"))
+             outputFormat.format(date!!)
+         } catch (e: Exception) {
+             dateTimeString
+@@ -145,6 +146,7 @@
+     }
+ 
+ 
++
+     private val weatherTranslations = mapOf(
+         // Condiciones despejadas/soleadas
+         "sunny" to "soleado",
+Index: app/src/main/res/drawable/cloud_sun.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/cloud_sun.xml b/app/src/main/res/drawable/cloud_sun.xml
+new file mode 100644
+--- /dev/null	(date 1749672265483)
++++ b/app/src/main/res/drawable/cloud_sun.xml	(date 1749672265483)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="640dp"
++    android:height="512dp"
++    android:viewportWidth="640"
++    android:viewportHeight="512">
++  <path
++      android:fillColor="#FF000000"
++      android:pathData="M294.2,1.2c5.1,2.1 8.7,6.7 9.6,12.1l14.1,84.7 84.7,14.1c5.4,0.9 10,4.5 12.1,9.6s1.5,10.9 -1.6,15.4l-38.5,55c-2.2,-0.1 -4.4,-0.2 -6.7,-0.2c-23.3,0 -45.1,6.2 -64,17.1l0,-1.1c0,-53 -43,-96 -96,-96s-96,43 -96,96s43,96 96,96c8.1,0 15.9,-1 23.4,-2.9c-36.6,18.1 -63.3,53.1 -69.8,94.9l-24.4,17c-4.5,3.2 -10.3,3.8 -15.4,1.6s-8.7,-6.7 -9.6,-12.1L98.1,317.9 13.4,303.8c-5.4,-0.9 -10,-4.5 -12.1,-9.6s-1.5,-10.9 1.6,-15.4L52.5,208 2.9,137.2c-3.2,-4.5 -3.8,-10.3 -1.6,-15.4s6.7,-8.7 12.1,-9.6L98.1,98.1l14.1,-84.7c0.9,-5.4 4.5,-10 9.6,-12.1s10.9,-1.5 15.4,1.6L208,52.5 278.8,2.9c4.5,-3.2 10.3,-3.8 15.4,-1.6zM144,208a64,64 0,1 1,128 0,64 64,0 1,1 -128,0zM639.9,431.9c0,44.2 -35.8,80 -80,80l-271.9,0c-53,0 -96,-43 -96,-96c0,-47.6 34.6,-87 80,-94.6l0,-1.3c0,-53 43,-96 96,-96c34.9,0 65.4,18.6 82.2,46.4c13,-9.1 28.8,-14.4 45.8,-14.4c44.2,0 80,35.8 80,80c0,5.9 -0.6,11.7 -1.9,17.2c37.4,6.7 65.8,39.4 65.8,78.7z"/>
++</vector>
+Index: app/src/main/java/com/example/climasync/viewModel/ForecastViewModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/climasync/viewModel/ForecastViewModel.kt b/app/src/main/java/com/example/climasync/viewModel/ForecastViewModel.kt
+new file mode 100644
+--- /dev/null	(date 1749672265483)
++++ b/app/src/main/java/com/example/climasync/viewModel/ForecastViewModel.kt	(date 1749672265483)
+@@ -0,0 +1,57 @@
++package com.example.climasync.viewModel
++import android.util.Log
++import androidx.lifecycle.LiveData
++import androidx.lifecycle.MutableLiveData
++import androidx.lifecycle.ViewModel
++import androidx.lifecycle.viewModelScope
++import com.example.climasync.model.ForecastResponse
++import com.example.climasync.model.WeatherResponse
++import com.example.climasync.network.WeatherRepository
++import kotlinx.coroutines.launch
++
++class ForecastViewModel : ViewModel() {
++
++    private val repository = WeatherRepository()
++
++    private val _loaderState = MutableLiveData<Boolean>()
++    val loaderState: LiveData<Boolean> get() = _loaderState
++
++    private val _mensajeweather = MutableLiveData<WeatherResponse>()
++    val mensajeweather: LiveData<WeatherResponse> get() = _mensajeweather
++
++    private val _forecast = MutableLiveData<List<ForecastResponse.ForecastDay>>()
++    val forecast: LiveData<List<ForecastResponse.ForecastDay>> get() = _forecast
++
++    fun requestAPIInformation(coordinates: String) {
++        _loaderState.value = true
++        viewModelScope.launch {
++            val response = repository.getCurrentWeather(coordinates)
++            _loaderState.value = false
++            response?.let {
++                _mensajeweather.value = it
++            } ?: run {
++                Log.e("API_ERROR", "NO SE PUDO COMPLETAR LA PETICION")
++            }
++        }
++    }
++
++    fun fetchForecastInformation(coordinates: String) {
++        _loaderState.value = true
++        viewModelScope.launch {
++            val forecastResponse = repository.getForecastWeather(coordinates)
++            _loaderState.value = false
++            forecastResponse?.let {
++                _forecast.value = it
++            } ?: run {
++                Log.e("FORECAST_ERROR", "No se pudo obtener el pronóstico")
++            }
++        }
++    }
++
++    fun fetchWeatherByCoordinates(lat: Double, lon: Double) {
++        val coordinates = "$lat,$lon"
++        requestAPIInformation(coordinates)
++        fetchForecastInformation(coordinates)
++    }
++}
++

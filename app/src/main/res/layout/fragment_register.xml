@@ -14,12 +14,12 @@
         android:layout_height="128dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
+        android:src="@drawable/registro"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/user_icon"
-        tools:srcCompat="@drawable/user_icon" />
+         />
 
 
     <com.google.android.material.textfield.TextInputLayout

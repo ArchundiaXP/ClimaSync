@@ -42,8 +42,8 @@ class ClimaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()         // 👈 PRIMERO
-        setupObservers()            // luego observar
+        setupRecyclerView()
+        setupObservers()
         checkLocationPermissionAndFetch()
     }
 
@@ -129,27 +129,77 @@ class ClimaFragment : Fragment() {
         }
     }
 
+    private val weatherTranslations = mapOf(
+        // Condiciones despejadas/soleadas
+        "sunny" to "soleado",
+        "clear" to "despejado",
+
+        // Condiciones nubladas
+        "partly cloudy" to "parcialmente nublado",
+        "cloudy" to "nublado",
+        "overcast" to "muy nublado",
+
+        // Condiciones de lluvia
+        "rain" to "lluvia",
+        "light rain" to "lluvia ligera",
+        "moderate rain" to "lluvia moderada",
+        "heavy rain" to "lluvia intensa",
+        "patchy rain" to "lluvia dispersa",
+        "drizzle" to "llovizna",
+        "freezing drizzle" to "llovizna helada",
+
+        // Condiciones de tormenta
+        "thunderstorm" to "tormenta",
+        "thunderstorm with light rain" to "tormenta con lluvia ligera",
+        "thunderstorm with rain" to "tormenta con lluvia",
+        "thunderstorm with heavy rain" to "tormenta con lluvia intensa",
+
+        // Condiciones de nieve
+        "snow" to "nieve",
+        "light snow" to "nieve ligera",
+        "heavy snow" to "nieve intensa",
+        "sleet" to "aguanieve",
+        "light sleet" to "aguanieve ligera",
+        "freezing rain" to "lluvia helada",
+
+        // Condiciones especiales
+        "fog" to "niebla",
+        "mist" to "neblina",
+        "haze" to "bruma",
+        "sand" to "tormenta de arena",
+        "dust" to "tormenta de polvo"
+    )
+
     private fun getWeatherGreeting(condition: String): String {
-        val lower = condition.lowercase(Locale.getDefault())
+        val lowerCondition = condition.lowercase(Locale.getDefault())
 
         val emoji = when {
-            "sunny" in lower || "clear" in lower -> "☀️"
-            "cloudy" in lower -> "☁️"
-            "rain" in lower || "drizzle" in lower -> "🌧️"
-            "thunder" in lower -> "⛈️"
-            "snow" in lower || "sleet" in lower -> "❄️"
-            "fog" in lower || "mist" in lower -> "🌫️"
+            lowerCondition.contains("sunny") || lowerCondition.contains("soleado") ||
+                    lowerCondition.contains("clear") || lowerCondition.contains("despejado") -> "☀️"
+
+            lowerCondition.contains("partly cloudy") || lowerCondition.contains("parcialmente nublado") -> "⛅"
+
+            lowerCondition.contains("cloudy") || lowerCondition.contains("nublado") ||
+                    lowerCondition.contains("overcast") || lowerCondition.contains("muy nublado") -> "☁️"
+
+            lowerCondition.contains("rain") || lowerCondition.contains("lluvia") ||
+                    lowerCondition.contains("drizzle") || lowerCondition.contains("llovizna") -> "🌧️"
+
+            lowerCondition.contains("thunderstorm") || lowerCondition.contains("tormenta") -> "⛈️"
+
+            lowerCondition.contains("snow") || lowerCondition.contains("nieve") ||
+                    lowerCondition.contains("sleet") || lowerCondition.contains("aguanieve") -> "❄️"
+
+            lowerCondition.contains("fog") || lowerCondition.contains("niebla") ||
+                    lowerCondition.contains("mist") || lowerCondition.contains("neblina") -> "🌫️"
+
             else -> ""
         }
 
-        val translation = mapOf(
-            "sunny" to "soleado", "clear" to "despejado",
-            "partly cloudy" to "parcialmente nublado", "cloudy" to "nublado",
-            "rain" to "lluvia", "light rain" to "lluvia ligera", "drizzle" to "llovizna",
-            "snow" to "nieve", "thunderstorm" to "tormenta", "fog" to "niebla"
-        )[lower] ?: condition
 
-        return "$emoji $translation"
+        val displayCondition = weatherTranslations[lowerCondition] ?: condition
+
+        return "$emoji $displayCondition"
     }
 
     private fun showErrorState() {

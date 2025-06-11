@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#1A91DE"
+    >
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="416dp"
-            android:layout_height="652dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/permissionContinuar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/permission"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/permissionContinuar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="3:4"
+        android:scaleType="fitCenter"
+        android:layout_margin="24dp" />
 
-        <Button
-            android:id="@+id/permissionContinuar"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#374375"
-            android:text="Continuar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+    <Button
+        android:id="@+id/permissionContinuar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Continuar"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#374375"
+        android:elevation="4dp"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
