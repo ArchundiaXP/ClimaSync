@@ -15,86 +15,74 @@ import com.example.climasync.utils.FragmentCommunicator
 import com.example.climasync.viewModel.RestorePasswordViewModel
 
 
-
 class Restore_password : Fragment() {
 
     private var _binding: FragmentRestorePasswordBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<RestorePasswordViewModel>()
-    var isValid: Boolean = false
     private lateinit var communicator: FragmentCommunicator
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRestorePasswordBinding.inflate(inflater, container, false)
         communicator = requireActivity() as FragmentCommunicator
         setupView()
         setupObservers()
-        requestRestorePassword()
-        return (binding.root)
+        return binding.root
     }
 
     private fun setupView() {
         binding.flechaRestorePassword.setOnClickListener {
             findNavController().navigate(R.id.action_restore_password_to_loginFragment)
         }
-        binding.resertButton.setOnClickListener {
-            findNavController().navigate(R.id.action_restore_password_to_loginFragment)
-        }
 
         binding.resertButton.setOnClickListener {
-            if(isValid){
+            if (validateInput()) {
                 requestRestorePassword()
-
-                Toast.makeText(activity, "Datos válidos", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(activity, "Datos inválidos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Por favor introduce tu correo", Toast.LENGTH_SHORT).show()
             }
         }
 
-        binding.editTextEmail.addTextChangedListener{
-
-            if(binding.editTextEmail.text.toString().isEmpty()){
-                binding.textViewInstruction.error= "Campo requerido"
-                isValid = false
-            }else{
-                isValid = true
+        binding.editTextEmail.addTextChangedListener { editable ->
+            if (!editable.isNullOrBlank()) {
+                binding.textInputLayoutEmail.error = null
             }
+        }
+    }
+
+    private fun validateInput(): Boolean {
+        val email = binding.editTextEmail.text.toString().trim()
+
+        return if (email.isEmpty()) {
+            binding.textInputLayoutEmail.error = "Campo requerido"
+            false
+        } else {
+            binding.textInputLayoutEmail.error = null
+            true
         }
     }
 
     private fun setupObservers() {
-        //accedemos a los publisher y con el observer definimos quien es el encargado del ciclo de vida
         viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
-            communicator.showLoader(loaderState)//llamamos al loader para mostrarlo
-
-            viewModel.msj.observe(viewLifecycleOwner) { msj ->
-                if (msj) {
-                    Toast.makeText(activity, "Datos guardados", Toast.LENGTH_SHORT).show()
-
-                } else {
-                    Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show()
-                }
-
-
-            }
-
+            communicator.showLoader(loaderState)
         }
 
+        viewModel.msj.observe(viewLifecycleOwner) { msj ->
+            if (msj) {
+                Toast.makeText(requireContext(), "Correo enviado correctamente", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_restore_password_to_loginFragment)
+            } else {
+                Toast.makeText(requireContext(), "No se pudo enviar el correo", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
-
-    private fun requestRestorePassword(){
-        viewModel.requestRestorePassword(binding.editTextEmail.text.toString())
-
+    private fun requestRestorePassword() {
+        val email = binding.editTextEmail.text.toString().trim()
+        viewModel.requestRestorePassword(email)
     }
 
     override fun onDestroyView() {

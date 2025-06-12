@@ -42,41 +42,58 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun setupView(){
+    private fun setupView() {
         binding.textRegistrarse.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        //cuando de click en el boton de login
+
         binding.btnLogin.setOnClickListener {
-            //validar que se ingresen en los campos datos
-            if(isValid){
+            if (validateInputs()) {
                 requestLogin()
-            }else{
-                Toast.makeText(activity, "Datos Invalidos ", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(activity, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.emailTIET.addTextChangedListener {
-            if(binding.emailTIET.text.toString().isEmpty()){
-                binding.textInputLayout.error = "Campo requerido"
-                isValid = false
-            }else{
-                isValid = true
+            if (!it.isNullOrBlank()) {
+                binding.textInputLayout.error = null
             }
         }
 
         binding.passwordTIET.addTextChangedListener {
-            if (binding.passwordTIET.text.toString().isEmpty()) {
-                binding.textInputLayout2.error = "Campo requerido"
-                isValid = false
-            } else {
-                isValid = true
+            if (!it.isNullOrBlank()) {
+                binding.textInputLayout2.error = null
             }
         }
+
         binding.textRestablecer.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_restore_password)
         }
     }
+    private fun validateInputs(): Boolean {
+        var isValid = true
+
+        val email = binding.emailTIET.text.toString().trim()
+        val password = binding.passwordTIET.text.toString().trim()
+
+        if (email.isEmpty()) {
+            binding.textInputLayout.error = "Campo requerido"
+            isValid = false
+        } else {
+            binding.textInputLayout.error = null
+        }
+
+        if (password.isEmpty()) {
+            binding.textInputLayout2.error = "Campo requerido"
+            isValid = false
+        } else {
+            binding.textInputLayout2.error = null
+        }
+
+        return isValid
+    }
+
 
     private fun setupObservers() {
         // Observa el estado del loader
