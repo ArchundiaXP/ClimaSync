@@ -20,6 +20,7 @@ import com.example.climasync.core.LocationProvider
 import kotlinx.coroutines.launch
 import android.Manifest
 import android.content.pm.PackageManager
+import androidx.core.view.GravityCompat
 
 
 class WeatherFragment : Fragment() {
@@ -42,17 +43,38 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
+
         if (LocationProvider.getInstance(requireContext()).hasLocationPermission(requireContext())) {
             getUserLocationAndWeather()
         } else {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
         }
 
-        /* FORZAR CRASH con el botón btMenu
         binding.btMenu.setOnClickListener {
-            throw RuntimeException("Crash for testing Crashlytics")
-        }*/
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    Toast.makeText(requireContext(), "Inicio", Toast.LENGTH_SHORT).show()
+                    binding.drawerLayout.closeDrawers()
+                    true
+                }
+                R.id.nav_about -> {
+                    Toast.makeText(requireContext(), "Acerca", Toast.LENGTH_SHORT).show()
+                    binding.drawerLayout.closeDrawers()
+                    true
+                }
+                R.id.nav_out -> {
+                    requireActivity().finishAffinity()
+                    true
+                }
+                else -> false
+            }
+        }
     }
+
 
     private fun setupObservers() {
         viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
@@ -70,9 +92,6 @@ class WeatherFragment : Fragment() {
             val sunrise = forecastList.firstOrNull()?.astro?.sunrise
             binding.txtHoraAmanecer.text = sunrise ?: getString(R.string.unknown_time)
         }
-
-
-
     }
 
     private fun showWeatherData(weatherResponse: WeatherResponse) {
