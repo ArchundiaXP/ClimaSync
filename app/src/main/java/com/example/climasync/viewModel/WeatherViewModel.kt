@@ -9,10 +9,17 @@ import com.example.climasync.model.ForecastResponse
 import com.example.climasync.model.WeatherResponse
 import com.example.climasync.network.WeatherRepository
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 class WeatherViewModel : ViewModel() {
 
     private val repository = WeatherRepository()
+
+    @HiltViewModel
+    class PersonalInformationViewModel @Inject constructor(
+        private val repository: WeatherRepository
+    ):ViewModel(){
 
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean> get() = _loaderState

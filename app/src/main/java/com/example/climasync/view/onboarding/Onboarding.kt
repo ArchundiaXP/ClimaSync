@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.example.climasync.databinding.ActivityOnboardingBinding
 import com.example.climasync.utils.FragmentCommunicator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Onboarding : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var binding: ActivityOnboardingBinding

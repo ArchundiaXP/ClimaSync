@@ -5,9 +5,15 @@ import com.example.climasync.core.RetrofitInstance
 import com.example.climasync.core.WeatherAPI
 import com.example.climasync.model.ForecastResponse
 import com.example.climasync.model.WeatherResponse
+import jakarta.inject.Inject
+
 
 class WeatherRepository {
     private val retrofit = RetrofitInstance.getRetrofit().create(WeatherAPI::class.java)
+
+    class WeatherRepository @Inject constructor(
+        private val weatherAPI: WeatherAPI
+    ){
 
     suspend fun getCurrentWeather(coordinates: String): WeatherResponse? {
         return try {

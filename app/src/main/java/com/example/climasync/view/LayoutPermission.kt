@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.climasync.R
 import com.example.climasync.databinding.FragmentLayoutPermissionBinding
 import com.example.climasync.viewModel.LayoutPermisionViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LayoutPermission : Fragment() {
 
     private var _binding: FragmentLayoutPermissionBinding? = null

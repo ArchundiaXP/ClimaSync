@@ -9,7 +9,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.climasync.R
 import com.example.climasync.databinding.ActivityHomeBinding
 import com.example.climasync.utils.FragmentCommunicator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var binding: ActivityHomeBinding

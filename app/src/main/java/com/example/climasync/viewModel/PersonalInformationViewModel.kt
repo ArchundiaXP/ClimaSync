@@ -4,11 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.climasync.network.WeatherRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 class PersonalInformationViewModel: ViewModel()  {
     //publisher para mostrar loader
+
+    @HiltViewModel
+    class PersonalInformationViewModel @Inject constructor(
+        private val repository: WeatherRepository
+    ):ViewModel(){
+
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean>
         get() = _loaderState

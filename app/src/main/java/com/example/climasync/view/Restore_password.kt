@@ -13,8 +13,9 @@ import com.example.climasync.R
 import com.example.climasync.databinding.FragmentRestorePasswordBinding
 import com.example.climasync.utils.FragmentCommunicator
 import com.example.climasync.viewModel.RestorePasswordViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Restore_password : Fragment() {
 
     private var _binding: FragmentRestorePasswordBinding? = null

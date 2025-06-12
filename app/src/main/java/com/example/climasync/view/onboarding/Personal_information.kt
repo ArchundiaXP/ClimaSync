@@ -14,12 +14,14 @@ import com.example.climasync.databinding.FragmentPersonalInformationBinding
 import com.example.climasync.utils.FragmentCommunicator
 
 import com.example.climasync.viewModel.PersonalInformationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
 
 A simple [androidx.fragment.app.Fragment] subclass.
 Use the [personal_information.newInstance] factory method to
 create an instance of this fragment.*/
+@AndroidEntryPoint
 class Personal_information : Fragment() {
     // TODO: Rename and change types of parameters
 

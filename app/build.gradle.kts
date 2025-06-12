@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services.plugin)
     alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.safeargs)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kapt)
 
 }
 
@@ -72,5 +75,8 @@ dependencies {
     // Location
     implementation(libs.location)
     implementation(libs.coroutines.play)
+    // Dagger hilt
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
 }

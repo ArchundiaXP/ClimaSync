@@ -13,10 +13,12 @@ import com.example.climasync.databinding.FragmentRegisterBinding
 import com.example.climasync.utils.FragmentCommunicator
 import androidx.core.widget.addTextChangedListener
 import com.example.climasync.viewModel.RegistroViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [androidx.fragment.app.Fragment] subclass as the second destination in the navigation.
  */
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null

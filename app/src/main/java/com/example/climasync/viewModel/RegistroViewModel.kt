@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.climasync.network.WeatherRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
@@ -12,8 +13,15 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 class RegistroViewModel : ViewModel() {
+
+@HiltViewModel
+    class PersonalInformationViewModel @Inject constructor(
+        private val repository: WeatherRepository
+    ):ViewModel(){
 
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean> get() = _loaderState

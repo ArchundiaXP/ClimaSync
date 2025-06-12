@@ -15,10 +15,12 @@ import com.example.climasync.databinding.FragmentLoginBinding
 import com.example.climasync.utils.FragmentCommunicator
 import com.example.climasync.view.HomeActivity
 import com.example.climasync.viewModel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [androidx.fragment.app.Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null//hacemos referencia al fragmento

@@ -20,8 +20,9 @@ import com.example.climasync.core.LocationProvider
 import kotlinx.coroutines.launch
 import android.Manifest
 import android.content.pm.PackageManager
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class WeatherFragment : Fragment() {
 
     private var _binding: FragmentWeatherBinding? = null
